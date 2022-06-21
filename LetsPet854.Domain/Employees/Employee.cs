@@ -7,5 +7,13 @@
         public DateTime EffectiveDate { get; set; }
         public bool ActiveEmployee { get; set; }
         public DateTime DismissalDate { get; set; }
+        public Employee(string cpf, string name, DateTime birthDate)
+        {
+            Cpf = cpf;
+            Name = name;
+            BirthDate = birthDate;
+            RegisterDate = DateTime.Now;
+            PersonContact = new Contact();
+        }
     }
 }
