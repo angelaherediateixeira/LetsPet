@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{FCC937DF-5573-47AD-A5C3-80DCDC76ECF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsPet854.Services", "LetsPet854.Services\LetsPet854.Services.csproj", "{15128714-45F3-45DC-8BF9-673F00C34999}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsPet854.Business", "LetsPet854.Services\LetsPet854.Business.csproj", "{15128714-45F3-45DC-8BF9-673F00C34999}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsPet854.Infra", "LetsPet854.Infra\LetsPet854.Infra.csproj", "{5D4C5DE8-7221-43BF-BA8B-88B1E4ACC566}"
 EndProject
