@@ -1,6 +1,6 @@
 ﻿namespace LetsPet_Employees
 {
-    internal class Employee : Person
+    public class Employee : Person
     {
         public BankInfo BankData { get; set; }
         public decimal Salary { get; set; }

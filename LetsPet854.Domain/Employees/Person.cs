@@ -1,6 +1,6 @@
 ﻿namespace LetsPet_Employees
 {
-    internal class Person
+    public class Person
     {
         public string Cpf { get; set; }
         public string Name { get; set; }
