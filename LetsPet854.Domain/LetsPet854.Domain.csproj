@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Employees\" />
     <Folder Include="Attendance\" />
     <Folder Include="Stock\" />
     <Folder Include="Services\" />
