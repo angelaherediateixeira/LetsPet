@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LetsPet_Employees.Enums
 {
-	public enum Size
+	public enum SizeAnimal
 	{
 		Small = 1,
 		Large = 2,

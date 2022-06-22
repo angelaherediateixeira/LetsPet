@@ -11,17 +11,17 @@ namespace LetsPet_Employees
     {
         public Species specie { get; set; }
         public TypeService type { get; set; }
-        public Size size { get; set; }
+        public SizeAnimal size { get; set; }
         public bool MeetsSpecialNeeds { get; set; }
         public bool MeetsAggressiveAnimal { get; set; }
 
 
-        public EmployeeServices(string typeInput, string specie, string size, bool meetsSpecialNeeds, bool meetsAggressiveAnimal)
+        public EmployeeServices(SizeAnimal size, TypeService type, Species specie, bool meetsSpecialNeeds, bool meetsAggressiveAnimal)
         {
 
-            type = typeInput;
-            Species species = specie;
-            Size size = size;
+            TypeService Type = type;
+            Species Specie = specie;
+            SizeAnimal Size = size;
             MeetsSpecialNeeds = meetsSpecialNeeds;
             MeetsAggressiveAnimal = meetsAggressiveAnimal;
 
