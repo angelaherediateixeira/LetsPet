@@ -50,7 +50,31 @@ namespace LetsPet_Employees
             Regex RgxRandKey = new(@"^(\w+${8})\-(\w+${4})\-(\w+${4})\-(\w+${4})\-(\w+${12})");
             if (!RgxRandKey.Match(randomKey).Success)
             {
-                Console.WriteLine("Chave aleatóroa inválida! \nDigiget no formato ********-****-****-****-************");
+                Console.WriteLine("Chave aleatóroa inválida! \nDigite no formato ********-****-****-****-************");
+                return false;
+            }
+            return true;
+        }
+
+        public static bool IsBirthDateValid(string birthDate)
+        {
+            Regex RgxBirth = new(@"\d{2}/\d{2}/\d{4}");
+
+            if (!RgxBirth.Match(birthDate).Success)
+            {
+                Console.WriteLine("Data de nascimento inválida! \nDigite no formato dd/mm/aaaa");
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool IsBankCodeValid (string bankCode)
+        {
+            Regex RgxBankCode = new(@"\d{3}");
+            if (!RgxBankCode.Match(bankCode).Success)
+            {
+                Console.WriteLine("Código do banco inválido! \nDigite no formato de três números 123");
                 return false;
             }
             return true;
