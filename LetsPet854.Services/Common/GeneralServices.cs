@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LetsPet854.Business.Stock
+namespace LetsPet854.Business.Common
 {
     public class GeneralServices
     {
