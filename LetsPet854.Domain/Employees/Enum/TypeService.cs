@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace LetsPet_Employees.Enums
 {
-	public enum Size
+	public enum TypeService
 	{
-		Small = 1,
-		Large = 2,
+		Bath = 1,
+		Grooming = 2
 	}
 }

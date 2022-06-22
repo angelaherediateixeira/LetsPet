@@ -10,16 +10,16 @@ namespace LetsPet_Employees
     public class EmployeeServices
     {
         public Species specie { get; set; }
-        public Type type { get; set; }
+        public TypeService type { get; set; }
         public Size size { get; set; }
         public bool MeetsSpecialNeeds { get; set; }
         public bool MeetsAggressiveAnimal { get; set; }
 
 
-        public EmployeeServices(list type, list specie, list size, bool meetsSpecialNeeds, bool meetsAggressiveAnimal)
+        public EmployeeServices(string typeInput, string specie, string size, bool meetsSpecialNeeds, bool meetsAggressiveAnimal)
         {
 
-            Type type = type;
+            type = typeInput;
             Species species = specie;
             Size size = size;
             MeetsSpecialNeeds = meetsSpecialNeeds;
