@@ -21,6 +21,7 @@ namespace LetsPet854.Domain
                     {
                         Console.Write($" {service.GroomingType}");
                     }
+                    Console.Write($"; Espécie: {service.Species}; ");
                     Console.Write($"; Porte {service.Size}; ");
                     Console.Write($"Serviço especial: {service.Special}; ");
                     Console.Write($"Loção: {service.Lotion}; ");
@@ -36,7 +37,7 @@ namespace LetsPet854.Domain
 
             foreach (var service in Registration.ServicesList)
             {
-                if (search == service.Type || search == service.Size)
+                if (search == service.Species || search == service.Size)
                 {
                     Console.WriteLine($"Nome do serviço: {service.Name}");
                     Console.Write("Informações do serviço: ");
@@ -45,6 +46,7 @@ namespace LetsPet854.Domain
                     {
                         Console.Write($" {service.GroomingType}");
                     }
+                    Console.Write($"; Espécie: {service.Species}; ");
                     Console.Write($"; Porte {service.Size}; ");
                     Console.Write($"Serviço especial: {service.Special}; ");
                     Console.Write($"Loção: {service.Lotion}; ");
