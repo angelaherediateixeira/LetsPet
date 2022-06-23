@@ -14,5 +14,14 @@ namespace LetsPet854.Domain.Common
         public Contact PersonContact { get; set; }
         public DateTime RegisterDate { get; set; }
 
+        public Person(string cpf, string name, DateTime birthDate, Contact personContact, DateTime registerDate)
+        {
+            Cpf = cpf;
+            Name = name;
+            BirthDate = birthDate;
+            PersonContact = personContact;
+            RegisterDate = registerDate;
+        }
     }
+
 }
