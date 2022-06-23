@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LetsPet854.Domain.Common.Enuns;
+using LetsPet854.Domain.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,13 +30,13 @@ namespace LetsPet854.Domain
             {
                 Console.WriteLine("O que você deseja cadastrar?");
                 order = 1;
-                foreach (Type service in Enum.GetValues(typeof(Type)))
+                foreach (ServiceType service in Enum.GetValues(typeof(ServiceType)))
                 {
                     Console.WriteLine($"{order} - {service}");
                     order++;
                 }
             } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
-            Type = Enum.GetName(typeof(Type), order);
+            Type = Enum.GetName(typeof(ServiceType), order);
 
             if (order == 2)
             {
@@ -71,13 +73,13 @@ namespace LetsPet854.Domain
             {
                 order = 1;
                 Console.WriteLine("Para qual porte é este serviço?");
-                foreach (Size especie in Enum.GetValues(typeof(Size)))
+                foreach (BreedSize especie in Enum.GetValues(typeof(BreedSize)))
                 {
                     Console.WriteLine($"{order} - {especie}");
                     order++;
                 }
             } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
-            Size = Enum.GetName(typeof(Size), order);
+            Size = Enum.GetName(typeof(BreedSize), order);
             order = 1;
 
             do
