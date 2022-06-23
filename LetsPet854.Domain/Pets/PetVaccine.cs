@@ -11,12 +11,11 @@ namespace LetsPet854.Domain.Pets
         //public VaccineSystemRegister VaccineType { get; set; }
         public DateTime ImmunizationDate { get; set; }
         public DateTime RegistrationDate { get; set; }
-
+      
         //public DateTime GetReapplicationDate()
         //{
            
         //    return ImmunizationDate.AddMonths(VaccineType.VaccineValidity);
         //}
-
     }
 }
