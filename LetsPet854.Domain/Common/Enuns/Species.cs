@@ -1,4 +1,7 @@
-﻿namespace LetsPet854.Domain
+﻿using System;
+
+
+namespace LetsPet854.Domain.Common.Enuns
 {
     public enum Species
     {
@@ -6,4 +9,3 @@
         Gato = 2,
     }
 }
-

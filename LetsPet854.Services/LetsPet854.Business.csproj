@@ -10,9 +10,12 @@
   <ItemGroup>
     <Folder Include="Attendance\" />
     <Folder Include="Employees\" />
-    <Folder Include="Pets\" />
     <Folder Include="Services\" />
     <Folder Include="Stock\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LetsPet854.Domain\LetsPet854.Domain.csproj" />
   </ItemGroup>
 
 </Project>
