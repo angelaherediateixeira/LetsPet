@@ -9,6 +9,8 @@ namespace LetsPet854.Domain.Pets
 {
     public class RegisterAnimal
     {
+        
+        
         public string GetAnimalName()
         {
             string animalName;
@@ -75,7 +77,7 @@ namespace LetsPet854.Domain.Pets
             return animalColor;
         }
 
-        public BreedSize GetSize()
+        public BreedSize GetBreedSize()
         {
             bool valido = true;
             int inputNumerico;
@@ -111,6 +113,21 @@ namespace LetsPet854.Domain.Pets
             } while (true);
             return animalWeight;
         }
+        public DateTime GetBirthDate()
+        {
+            DateTime animalBirthDate;
+            do
+            {
+                Console.WriteLine("Qual a data de nascimento do animal? (DD/MM/YYYY)");
+                if (DateTime.TryParse(Console.ReadLine(), out animalBirthDate))
+                {
+                    break;
+                }
+                Console.WriteLine("Valor inválido.");
+            } while (true);
+            return animalBirthDate;
+        }
+
 
         public Gender GetGender()
         {
@@ -292,7 +309,32 @@ namespace LetsPet854.Domain.Pets
             }
             return physicalDisability;
         }
+     
+        public Animal AnimalRegister()
+        {
+            var pet = new RegisterAnimal();
+            var name = pet.GetAnimalName();
+            var species = pet.GetSpecies();
+            var breed = pet.GetBreed();
+            var color = pet.GetColor();
+            var breedSize = pet.GetBreedSize();
+            var weight = pet.GetWeight();
+            var birthDate = pet.GetBirthDate();
+            var gender = pet.GetGender();
+            var castratedBool = pet.GetCastratedBool();
+            var diseaseBool = pet.GetDiseasesBool();
+            var aggressiveBool = pet.GetAggressiveBool();
+            var allergiesBool = pet.GetAllergiesBool();
+            var physicalDisabilityBool = pet.GetPhysicalDisabilityBool();
+            var allergiesList = pet.GetAllergiesList();
+            var diseasesList = pet.GetDiseasesList();
+            var physicalDisabilityList = pet.GetPhysicalDisabilityList();
+            
+            //var vaccine        
 
+            Animal pet1 = new(name, species, breed, color, breedSize, weight, birthDate, gender, castratedBool, diseaseBool, aggressiveBool, allergiesBool, physicalDisabilityBool, allergiesList, diseasesList, physicalDisabilityList);
+            return pet1;
+        }
 
 
     }
