@@ -8,13 +8,51 @@ namespace LetsPet854.Domain
 {
     internal class Search
     {
-        public static void ServicesSearch(string search)
+        public static void TypeSearch(string search)
         {
-            var internalSearch = Registration.ServicesList.Where(s => s.Type == search);
-
-            foreach (var service in internalSearch)
+            foreach (var service in Registration.ServicesList)
             {
-                Console.WriteLine(service.Name);
+                if (search == service.Type)
+                {
+                    Console.WriteLine($"Nome do serviço: {service.Name}");
+                    Console.Write("Informações do serviço: ");
+                    Console.Write(service.Type);
+                    if (service.GroomingType != null)
+                    {
+                        Console.Write($" {service.GroomingType}");
+                    }
+                    Console.Write($"; Espécie: {service.Species}; ");
+                    Console.Write($"; Porte {service.Size}; ");
+                    Console.Write($"Serviço especial: {service.Special}; ");
+                    Console.Write($"Loção: {service.Lotion}; ");
+                    Console.Write($"Tempo: {service.ServiceTime}h; ");
+                    Console.WriteLine($"Preço: {service.Price}.");
+                }
+            }
+
+        }
+
+        public static void SizeOrSpeciesSearch(string search)
+        {
+
+            foreach (var service in Registration.ServicesList)
+            {
+                if (search == service.Species || search == service.Size)
+                {
+                    Console.WriteLine($"Nome do serviço: {service.Name}");
+                    Console.Write("Informações do serviço: ");
+                    Console.Write(service.Type);
+                    if (service.GroomingType != null)
+                    {
+                        Console.Write($" {service.GroomingType}");
+                    }
+                    Console.Write($"; Espécie: {service.Species}; ");
+                    Console.Write($"; Porte {service.Size}; ");
+                    Console.Write($"Serviço especial: {service.Special}; ");
+                    Console.Write($"Loção: {service.Lotion}; ");
+                    Console.Write($"Tempo: {service.ServiceTime}h; ");
+                    Console.WriteLine($"Preço: {service.Price}.");
+                }
             }
         }
 
@@ -31,18 +69,18 @@ namespace LetsPet854.Domain
                 input = int.Parse(Console.ReadLine());
                 if (input == 1)
                 {
-                    ServicesSearch("Banho");
+                    TypeSearch("Banho");
                 }
                 else if (input == 2)
                 {
-                    ServicesSearch("Tosa");
+                    TypeSearch("Tosa");
                 }
             }
             else if (input == 2)
             {
                 Console.WriteLine("Digite um porte ou espécie");
                 search = Console.ReadLine();
-                ServicesSearch(search);
+                SizeOrSpeciesSearch(search);
             }
         }
     }

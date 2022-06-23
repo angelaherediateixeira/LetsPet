@@ -122,6 +122,7 @@ namespace LetsPet854.Domain
                     {
                         Console.Write($" {service.GroomingType}");
                     }
+                    Console.Write($"; Espécie: {service.Species}; ");
                     Console.Write($"; Porte {service.Size}; ");
                     Console.Write($"Serviço especial: {service.Special}; ");
                     Console.Write($"Loção: {service.Lotion}; ");
