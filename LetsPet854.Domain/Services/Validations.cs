@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace LetsPet854.Domain
+namespace LetsPet854.Domain.Services
 {
     public class Validations
     {
