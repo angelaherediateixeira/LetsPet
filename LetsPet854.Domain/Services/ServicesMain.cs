@@ -10,6 +10,7 @@ namespace LetsPet854.Domain.Services
     {
         public static int option;
         public static bool loop;
+        public static string validate;
 
         public static void DefaultMenu()
         {
@@ -17,7 +18,10 @@ namespace LetsPet854.Domain.Services
             {
                 Console.WriteLine("Opções de serviço:");
                 Console.WriteLine("1 - Cadastro de Serviços e Preços dos Serviços\n2 - Buscar serviço\n3 - Relatório de serviços prestados\n4 - Relatório de produtos por serviço prestado");
-                option = int.Parse(Console.ReadLine());
+                while (!int.TryParse(Console.ReadLine(), out option) || (option < 1 || option > 4))
+                {
+                    Console.WriteLine("Digite um valor válido:");
+                }
                 switch (option)
                 {
                     case 1:
@@ -31,8 +35,12 @@ namespace LetsPet854.Domain.Services
                     case 4:
                         break;
                 }
-                Console.WriteLine("Deseja realizar outra operação?");
-                loop = bool.Parse(Console.ReadLine());
+                do
+                {
+                    Console.WriteLine("Deseja realizar outra operação (S/N)?");
+                    validate = Console.ReadLine().ToUpper();
+                } while (!Validations.Resposta(validate));
+                loop = Validations.SimNao(validate);
             } while (loop);
         }
     }
