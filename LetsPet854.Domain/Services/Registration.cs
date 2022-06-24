@@ -10,19 +10,20 @@ namespace LetsPet854.Domain
 {
     public class Registration
     {
-        public static string Type;
-        public static string Species;
-        public static string Size;
-        public static string Name;
-        public static bool Special;
-        public static bool Lotion;
-        public static string GroomingType = "";
-        public static int ServiceTime = 1;
-        public static double Price;
-        public static int option;
-        public static int order;
-        public static string validate;
+        private static string Type { get; set; }
+        private static string Species { get; set; }
+        private static string Size { get; set; }
+        private static string Name { get; set; }
+        private static bool Special { get; set; }
+        private static bool Lotion { get; set; }
+        private static string GroomingType = "";
+        private static int ServiceTime { get { return 1; } set {; } }
+        private static double Price;
+        internal static int order;
+        internal static string validate;
         public static List<Service> ServicesList = new();
+        public static List<Discount> DiscountPackage = new();
+
 
         public static void AddService()
         {
@@ -95,7 +96,21 @@ namespace LetsPet854.Domain
 
         public static void AddDiscount()
         {
-            Console.WriteLine("Escolha um serviço:");
+            string serviceType;
+            double percentageDiscount;
+            int totalAttendance;
+
+            Console.WriteLine("Qual o tipo de serviço que terá desconto?");
+            serviceType = Console.ReadLine();
+
+            Console.WriteLine("Após quantos atendimentos?");
+            totalAttendance = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Qual a porcentagem de desconto?");
+            percentageDiscount = double.Parse(Console.ReadLine());
+
+            Discount newDiscount = new Discount(serviceType, percentageDiscount, totalAttendance);
+            DiscountPackage.Add(newDiscount);
         }
     }
 }
