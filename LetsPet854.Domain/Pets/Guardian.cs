@@ -10,14 +10,15 @@ namespace LetsPet854.Domain.Pets
     public class Guardian : Person
     {
 
-        public DateTime RegistrationDate { get; set; }
         public List<Animal> PetList { get; set; }
 
-        public Guardian(DateTime registrationDate, List<Animal> petList)
+        public Guardian(string cpf, string name, DateTime birthDate, Contact personContact, DateTime registerDate) :base (cpf, name, birthDate, personContact, registerDate) //List<Animal> petList, 
         {
-            RegistrationDate = registrationDate;
-            PetList = petList;
+            //PetList = petList;
         }
+
+
+
 
         
         // MÉTODOS

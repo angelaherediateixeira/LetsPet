@@ -111,24 +111,7 @@ namespace LetsPet854.Domain
             ServicesList.Add(newService);
             Console.WriteLine("Cadastro Realizado!\n");
 
-              foreach (var service in ServicesList)
-            {
-                if (newService.Name == service.Name)
-                {
-                    Console.WriteLine($"Nome do serviço: {service.Name}");
-                    Console.Write("Informações do serviço: ");
-                    Console.Write(service.Type);
-                    if (GroomingType != null)
-                    {
-                        Console.Write($" {service.GroomingType}");
-                    }
-                    Console.Write($"; Porte {service.Size}; ");
-                    Console.Write($"Serviço especial: {service.Special}; ");
-                    Console.Write($"Loção: {service.Lotion}; ");
-                    Console.Write($"Tempo: {service.ServiceTime}h; ");
-                    Console.WriteLine($"Preço: {service.Price}.");
-                }
-            }
+            ShowInfo.ByName(newService.Name);
         }
     }
 }
