@@ -29,12 +29,7 @@ namespace LetsPet854.Domain
             do
             {
                 Console.WriteLine("O que você deseja cadastrar?");
-                order = 1;
-                foreach (ServiceType service in Enum.GetValues(typeof(ServiceType)))
-                {
-                    Console.WriteLine($"{order} - {service}");
-                    order++;
-                }
+                ShowInfo.EnumServiceType();
             } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
             Type = Enum.GetName(typeof(ServiceType), order);
 
@@ -42,13 +37,8 @@ namespace LetsPet854.Domain
             {
                 do
                 {
-                    order = 1;
                     Console.WriteLine("Qual o tipo de tosa a ser realizado?");
-                    foreach (GroomingType service in Enum.GetValues(typeof(GroomingType)))
-                    {
-                        Console.WriteLine($"{order} - {service}");
-                        order++;
-                    }
+                    ShowInfo.EnumGroomingType();
                 } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 3));
                 GroomingType = Enum.GetName(typeof(GroomingType), order);
             }
@@ -59,28 +49,17 @@ namespace LetsPet854.Domain
 
             do
             {
-                order = 1;
                 Console.WriteLine("Para qual espécie é este serviço?");
-                foreach (Species especie in Enum.GetValues(typeof(Species)))
-                {
-                    Console.WriteLine($"{order} - {especie}");
-                    order++;
-                }
+                ShowInfo.EnumSpecies();
             } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
             Species = Enum.GetName(typeof(Species), order);
 
             do
             {
-                order = 1;
                 Console.WriteLine("Para qual porte é este serviço?");
-                foreach (BreedSize especie in Enum.GetValues(typeof(BreedSize)))
-                {
-                    Console.WriteLine($"{order} - {especie}");
-                    order++;
-                }
+                ShowInfo.EnumBreedSize();
             } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
             Size = Enum.GetName(typeof(BreedSize), order);
-            order = 1;
 
             do
             {
@@ -112,6 +91,11 @@ namespace LetsPet854.Domain
             Console.WriteLine("Cadastro Realizado!\n");
 
             ShowInfo.ByName(newService.Name);
+        }
+
+        public static void AddDiscount()
+        {
+            Console.WriteLine("Escolha um serviço:");
         }
     }
 }
