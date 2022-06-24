@@ -2,12 +2,12 @@
 {
     public class Employee : Person
     {
-        private BankInfo BankData { get; set; }
-        private Dictionary<DateTime, decimal> Salaries { get; set; }
-        private EmployeeServices ServicesType { get; set; }
-        private bool ActiveEmployee { get; set; }
-        private DateTime DismissalDate { get; set; }
-        private DateTime[] Schedule { get; set; }
+        public BankInfo BankData { get; private set; }
+        public Dictionary<DateTime, decimal> Salaries { get; private set; } = new Dictionary<DateTime, decimal>();
+        public EmployeeServices ServicesType { get; private set; }
+        public bool ActiveEmployee { get; private set; }
+        public DateTime DismissalDate { get; private set; }
+        public DateTime[] Schedule { get; private set; }
 
         public Employee(string cpf, string name, DateTime birthDate, BankInfo bankData,
             decimal salary, EmployeeServices servicesType, DateTime[] schedule)

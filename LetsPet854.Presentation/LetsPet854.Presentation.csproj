@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LetsPet854.Domain\LetsPet854.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

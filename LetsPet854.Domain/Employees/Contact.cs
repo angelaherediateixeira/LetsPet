@@ -2,16 +2,16 @@
 {
     public class Contact
     {
-        private string Street { get; set; }
-        private int Number { get; set; }
-        private string AdditionalAdressInfo { get; set; }
-        private string District { get; set; }
-        private string City { get; set; }
-        private string State { get; set; }
-        private string ZipCode { get; set; }
-        private string Phone { get; set; }
-        private string MobileNumber { get; set; }
-        private string Email { get; set; }
+        public string Street { get; private set; }
+        public int Number { get; set; }
+        public string AdditionalAdressInfo { get; private set; }
+        public string District { get; private set; }
+        public string City { get; private set; }
+        public string State { get; private set; }
+        public string ZipCode { get; private set; }
+        public string Phone { get; private set; }
+        public string MobileNumber { get; private set; }
+        public string Email { get; private set; }
 
         public Contact(string street, int number, string district,
             string city, string state, string zipcode,
@@ -92,7 +92,7 @@
             Header();
             if (OptionalInfos("Possuiu telefone fixo?"))
             {
-                phone = mobileNumber = Validation.ValidatePhoneInput("Informe o numero de telefone fixo:", "Telefone digitado inválido!\nDigite no formato (12)1234-1234");
+                phone = Validation.ValidatePhoneInput("Informe o numero de telefone fixo:", "Telefone digitado inválido!\nDigite no formato (12)1234-1234");
             }
             else
                 phone = "";

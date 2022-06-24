@@ -9,8 +9,8 @@ namespace LetsPet_Employees
 {
     public class EmployeeRegister
     {
-        List<Employee> EmployeesList = new List<Employee>();
-
+        public List<Employee> EmployeesList = new List<Employee>();
+        //Tirar o public
         public void CreateEmployee()
         {
 
@@ -33,7 +33,6 @@ namespace LetsPet_Employees
                 Console.WriteLine("Digite o CPF do funcionário:");
                 aux = Console.ReadLine();
                 Validation.IsCpfValid(aux);
-                Console.ReadKey();
 
             } while (!Validation.IsCpfValid(aux));
             cpf = aux;
@@ -46,7 +45,7 @@ namespace LetsPet_Employees
                 if (String.IsNullOrWhiteSpace(aux))
                     Console.WriteLine("Nome digitado está em branco");
 
-            } while (!String.IsNullOrWhiteSpace(aux));
+            } while (String.IsNullOrWhiteSpace(aux));
             name = aux;
             Console.Clear();
 
@@ -214,7 +213,7 @@ namespace LetsPet_Employees
                 }
             } while (!(aux.Equals("1") || aux.Equals("2") || aux.Equals("3")));
 
-            List<SizeAnimal> sizeAnimals = new List<SizeAnimal> ();
+            List<SizeAnimal> sizeAnimals = new List<SizeAnimal>();
 
             if (aux.Equals("1"))
                 sizeAnimals.Add(SizeAnimal.Small);
@@ -238,7 +237,7 @@ namespace LetsPet_Employees
             } while (!(aux.Equals("1") || aux.Equals("2")));
 
             bool specialNeeds = false;
-            if(aux.Equals("1"))
+            if (aux.Equals("1"))
                 specialNeeds = true;
 
             do
@@ -262,7 +261,7 @@ namespace LetsPet_Employees
             defaultSchedule[2] = Convert.ToDateTime("13:00:00");
             defaultSchedule[3] = Convert.ToDateTime("18:00:00");
 
-            if(EmployeesList.Count<Employee>() % 2 == 1)
+            if (EmployeesList.Count<Employee>() % 2 == 1)
             {
                 defaultSchedule[1] = Convert.ToDateTime("13:00:00");
                 defaultSchedule[2] = Convert.ToDateTime("14:00:00");
@@ -273,6 +272,194 @@ namespace LetsPet_Employees
             Employee newEmployee = new Employee(cpf, name, birthDate, bankInfo, salary, employeeServices, defaultSchedule);
 
             EmployeesList.Add(newEmployee);
+        }
+
+        public void SearchEmployeeByCPF(string CPF)
+        {
+            var FilterdEmployee = (
+                from employee in EmployeesList
+                where employee.Cpf.Equals(CPF)
+                select employee
+                );
+            if (FilterdEmployee.Count() == 0)
+            {
+                Console.WriteLine($"Nenhum funcionário com o CPF {CPF} foi encontrado no sistema.");
+                return;
+            }
+
+            foreach (Employee employee in FilterdEmployee)
+            {
+                PrintEmployee(employee);
+                return;
+            }
+        }
+
+        public void SearchEmployeeByName(string Name)
+        {
+            var FilterdEmployees = (
+                from employee in EmployeesList
+                where employee.Name.Contains(Name)
+                select employee
+                );
+            var ListResult = FilterdEmployees.ToList();
+
+            if (ListResult.Count() == 0)
+            {
+                Console.WriteLine($"Nenhum funcionário com o nome {Name} foi encontrado no sistema.");
+                return;
+            }
+
+            Console.Clear();
+            Console.WriteLine("--- Lista de funcionários ---");
+
+            for (int i = 0; i < ListResult.Count(); i++)
+            {
+                Console.WriteLine($" {i + 1} - {ListResult[i].Name}");
+            }
+            int response;
+            do
+            {
+                response = Validation.ValidatePositiveIntInput("Digite o numero do funcionário desejado:");
+                if (response > ListResult.Count() || response == 0) Console.WriteLine("Numero inválido");
+            } while (response > ListResult.Count() || response == 0);
+
+            PrintEmployee(ListResult[response-1]);
+        }
+
+        public void SearchEmployeeScheduleByCPF(string CPF)
+        {
+            var FilterdEmployee = (
+                from employee in EmployeesList
+                where employee.Cpf.Equals(CPF)
+                select employee
+                );
+            if (FilterdEmployee.Count() == 0)
+            {
+                Console.WriteLine($"Nenhum funcionário com o CPF {CPF} foi encontrado no sistema.");
+                return;
+            }
+            foreach (Employee employee in FilterdEmployee)
+            {
+                PrintEmployeeSchedule(employee);
+                return;
+            }
+        }
+
+        public void SearchEmployeeScheduleByName(string Name) {
+            var FilterdEmployees = (
+                    from employee in EmployeesList
+                    where employee.Name.Contains(Name)
+                    select employee
+                    );
+            var ListResult = FilterdEmployees.ToList();
+
+            if (ListResult.Count() == 0) {
+                Console.WriteLine($"Nenhum funcionário com o nome {Name} foi encontrado no sistema.");
+                return;
+            }
+
+            Console.Clear();
+            Console.WriteLine("--- Lista de funcionários ---");
+
+            for (int i = 0; i < ListResult.Count(); i++)
+            {
+                Console.WriteLine($" {i + 1} - {ListResult[i].Name}");
+            }
+            int response;
+            do
+            {
+                response = Validation.ValidatePositiveIntInput("Digite o numero do funcionário desejado:");
+                if (response > ListResult.Count() || response == 0) Console.WriteLine("Numero inválido");
+            } while (response > ListResult.Count() || response == 0);
+
+            PrintEmployeeSchedule(ListResult[response - 1]);
+        }
+        //Mudar isso daqui pra private dps dos testes 
+        private void PrintEmployee(Employee employee)
+        {
+            Console.Clear();
+            Console.WriteLine("-------- Ficha do funcionário ---------");
+            Console.WriteLine($"Nome do colaborador: {employee.Name}");
+            Console.WriteLine($"CPF: {employee.Cpf}");
+            Console.WriteLine($"Nascimento: {employee.BirthDate:dd/MM/yyyy}");
+            Console.WriteLine($"Data de registro: {employee.RegisterDate:dd/MM/yyyy}");
+            if (employee.ActiveEmployee)
+            {
+                Console.WriteLine("Funcinário Ativo");
+            }
+            else
+            {
+                Console.WriteLine($"Funcionário Inativo \n Data de Demissão: {employee.DismissalDate:dd/MM/yyyy}");
+                Console.WriteLine();
+
+                Console.WriteLine("--- Informações de contrato ---");
+                foreach (var Valor in employee.Salaries)
+                {
+                    Console.WriteLine($"Data Efetiva {Valor.Key:dd/MM/yyyy} Valor do Salário: {Valor.Value}");
+                }
+                return;
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("--- Informações de contato ---");
+            Console.WriteLine($"Endereço: {employee.PersonContact.Street}, Nº{employee.PersonContact.Number} - {employee.PersonContact.District}," +
+                $"{employee.PersonContact.City} - {employee.PersonContact.State}, {employee.PersonContact.ZipCode}");
+            Console.WriteLine($"Telefone celular: {employee.PersonContact.MobileNumber}");
+            Console.WriteLine($"Email: {employee.PersonContact.Email}");
+
+            if (!string.IsNullOrWhiteSpace(employee.PersonContact.AdditionalAdressInfo))
+            {
+                Console.WriteLine($"Informação adicionais: {employee.PersonContact.AdditionalAdressInfo}");
+            }
+            if (!string.IsNullOrWhiteSpace(employee.PersonContact.Phone))
+            {
+                Console.WriteLine($"Informação adicionais: {employee.PersonContact.Phone}");
+            }
+            Console.WriteLine();
+
+            Console.WriteLine($"--- Informações bancárias ---");
+            Console.WriteLine($"Banco: {employee.BankData.Bank}");
+            Console.WriteLine($"Agência: {employee.BankData.Agency}");
+            Console.WriteLine($"Nº da conta: {employee.BankData.AccountNumber}");
+            Console.WriteLine($"- Informações para pagamento -");
+            Console.WriteLine($"Salário: ${employee.GetSalary()}");
+            Console.WriteLine();
+            Console.WriteLine($"PIX\nTipo: {employee.BankData.PixType}\nChave: {employee.BankData.Pix}");
+            Console.WriteLine();
+
+            Console.WriteLine("--- Serviços prestados ---");
+            Console.WriteLine("Espécies atendidas:");
+            foreach (var Specie in employee.ServicesType.Species)
+            {
+                Console.WriteLine($" - {Specie}");
+            }
+
+            Console.WriteLine("Portes atendidos:");
+            foreach (var Size in employee.ServicesType.Sizes)
+            {
+                Console.WriteLine($" - {Size}");
+            }
+
+            Console.WriteLine("Tipos de serviços:");
+            foreach (var Type in employee.ServicesType.Types)
+            {
+                Console.WriteLine($" - {Type}");
+            }
+            var response = employee.ServicesType.MeetsSpecialNeeds ? "Atende" : "Não atende";
+            Console.WriteLine($"{response} animais com necessidades especiais.");
+
+            response = employee.ServicesType.MeetsAggressiveAnimal ? "Atende" : "Não atende";
+            Console.WriteLine($"{response} animais agressivos.");
+            Console.WriteLine();
+        }
+        private void PrintEmployeeSchedule(Employee employee)
+        {
+            Console.Clear();
+            Console.WriteLine($"--- Agenda do funcionário {employee.Name}---");
+            Console.WriteLine($"Horário de entrada: {employee.Schedule[0]:HH:mm}");
+            Console.WriteLine($"Horário de inicio intervalo: {employee.Schedule[1]:HH:mm}");
+            Console.WriteLine($"Horário de fim intervalo: {employee.Schedule[2]:HH:mm}");
+            Console.WriteLine($"Horário de saída: {employee.Schedule[3]:HH:mm}");
         }
     }
 }
