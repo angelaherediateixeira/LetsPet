@@ -7,17 +7,57 @@ using LetsPet_Employees.Enums;
 
 namespace LetsPet_Employees
 {
-    public class EmployeeRegister
+    public static class EmployeeRegister
     {
-        public List<Employee> EmployeesList = new List<Employee>();
-        //Tirar o public
-        public void CreateEmployee()
+        private static int response;
+        private static bool validation = false;
+        private static List<string> OptionsList = new List<string> {
+            "1 - Cadastrar Funcionário",
+            "2 - Pesquisar Funcionário",
+            "3 - Consultar Agenda Funcionário",
+            "4 - Sair"
+        };
+        public static List<Employee> EmployeesList { get; private set; } = new List<Employee>();
+        public static void DefaultMenu()
+        {
+            MenuHeader();
+            do
+            {
+                do
+                {
+                    response = Validation.ValidatePositiveIntInput("Selecione uma opção:");
+                    if (response > OptionsList.Count() || response <= 0)
+                    {
+                        validation = true;
+                        Console.WriteLine("Essa opção não existe!");
+                    }
+                } while (validation);
+
+                switch (response)
+                {
+                    case 1:
+                        CreateEmployee();
+                        MenuHeader();
+                        break;
+                    case 2:
+                        SearchInterface();
+                        MenuHeader();
+                        break;
+                    case 3:
+                        MenuHeader();
+                        Console.WriteLine("Opção em desenvolvimento");
+                        Console.ReadKey();
+                        break;
+                    case 4:
+                        return;
+                }
+            } while (true);
+        }
+        private static void CreateEmployee()
         {
 
-            Console.WriteLine("Cadastrando Funcionário: ");
-
-            string cpf;
             string name;
+            string cpf;
             DateTime birthDate;
             string bankCode;
             string agency;
@@ -28,37 +68,16 @@ namespace LetsPet_Employees
 
             string aux;
 
-            do
-            {
-                Console.WriteLine("Digite o CPF do funcionário:");
-                aux = Console.ReadLine();
-                Validation.IsCpfValid(aux);
+            Header();
+            name = Validation.ValidateStringInput("Digite o nome do funcionário", "Nome digitado está em branco");
 
-            } while (!Validation.IsCpfValid(aux));
-            cpf = aux;
-            Console.Clear();
+            Header();
+            cpf = Validation.ValidateCPFInput("Digite o CPF do funcionário:");
 
-            do
-            {
-                Console.WriteLine("Digite o nome do funcionário:");
-                aux = Console.ReadLine();
-                if (String.IsNullOrWhiteSpace(aux))
-                    Console.WriteLine("Nome digitado está em branco");
+            Header();
+            birthDate = Convert.ToDateTime(Validation.ValidateDateInput("Digite a data de nascimento do funcionário:"));
 
-            } while (String.IsNullOrWhiteSpace(aux));
-            name = aux;
-            Console.Clear();
-
-            do
-            {
-                Console.WriteLine("Digite a data de nascimento do funcionário:");
-                aux = Console.ReadLine();
-                Validation.IsBirthDateValid(aux);
-
-            } while (!Validation.IsBirthDateValid(aux));
-            birthDate = Convert.ToDateTime(aux);
-            Console.Clear();
-
+            Header();
             do
             {
                 Console.WriteLine("Digite o código do banco:");
@@ -66,8 +85,8 @@ namespace LetsPet_Employees
                 Validation.IsBankCodeValid(aux);
             } while (!Validation.IsBankCodeValid(aux));
             bankCode = aux;
-            Console.Clear();
 
+            Header();
             do
             {
                 Console.WriteLine("Digite o número da agência:");
@@ -76,8 +95,8 @@ namespace LetsPet_Employees
 
             } while (!Validation.IsAgencyCodeValid(aux));
             agency = aux;
-            Console.Clear();
 
+            Header();
             do
             {
                 Console.WriteLine("Digite o número da conta:");
@@ -86,8 +105,8 @@ namespace LetsPet_Employees
 
             } while (!Validation.IsAccountValid(aux));
             accountNumber = aux;
-            Console.Clear();
 
+            Header();
             do
             {
                 Console.WriteLine("Digite o tipo da chave pix que deseja usar: \n1 - CPF \n2 - Email \n3 - Número de celular \n4 - Chave aleatória");
@@ -100,9 +119,9 @@ namespace LetsPet_Employees
 
             } while (!(aux.Equals("1") || aux.Equals("2") || aux.Equals("3") || aux.Equals("4")));
             pixType = aux;
-            Console.Clear();
             bool exit = false;
 
+            Header();
             do
             {
                 while (!exit && pixType.Equals("1"))
@@ -140,8 +159,8 @@ namespace LetsPet_Employees
 
             } while (!exit);
             pixKey = aux;
-            Console.Clear();
 
+            Header();
             do
             {
                 Console.WriteLine("Digite o salário do funcionário: ");
@@ -152,8 +171,8 @@ namespace LetsPet_Employees
                     Console.WriteLine();
                 }
             } while (!(Decimal.TryParse(aux, out salary)));
-            Console.Clear();
 
+            Header();
             do
             {
                 Console.WriteLine("Digite a espécie de animal que o funcionário vai atender: \n1 - Cachorro \n2 - Gato \n3 - Ambos ");
@@ -176,8 +195,8 @@ namespace LetsPet_Employees
                 speciesAnimals.Add(Species.Dog);
                 speciesAnimals.Add(Species.Cat);
             }
-            Console.Clear();
 
+            Header();
             do
             {
                 Console.WriteLine("Digite o tipo de serviços que o funcionário executará: \n1 - Banho \n2 - Tosa \n3 - Ambos");
@@ -202,6 +221,7 @@ namespace LetsPet_Employees
                 serviceTypes.Add(TypeService.Grooming);
             }
 
+            Header();
             do
             {
                 Console.WriteLine("Digite o porte de animal que o funcionário irá atender: \n1 - Pequeno porte \n2 - Grande porte \n3- Ambos ");
@@ -225,6 +245,7 @@ namespace LetsPet_Employees
                 sizeAnimals.Add(SizeAnimal.Large);
             }
 
+            Header();
             do
             {
                 Console.WriteLine("O funcionário consegue lidar com animais que precisam de necessidades especiais? \n1 - sim \n 2 - não");
@@ -240,6 +261,7 @@ namespace LetsPet_Employees
             if (aux.Equals("1"))
                 specialNeeds = true;
 
+            Header();
             do
             {
                 Console.WriteLine("O funcionário consegue lidar com animais agressigos? \n1 - sim \n2 - não");
@@ -274,7 +296,7 @@ namespace LetsPet_Employees
             EmployeesList.Add(newEmployee);
         }
 
-        public void SearchEmployeeByCPF(string CPF)
+        public static void SearchEmployeeByCPF(string CPF)
         {
             var FilterdEmployee = (
                 from employee in EmployeesList
@@ -294,7 +316,7 @@ namespace LetsPet_Employees
             }
         }
 
-        public void SearchEmployeeByName(string Name)
+        public static void SearchEmployeeByName(string Name)
         {
             var FilterdEmployees = (
                 from employee in EmployeesList
@@ -323,10 +345,10 @@ namespace LetsPet_Employees
                 if (response > ListResult.Count() || response == 0) Console.WriteLine("Numero inválido");
             } while (response > ListResult.Count() || response == 0);
 
-            PrintEmployee(ListResult[response-1]);
+            PrintEmployee(ListResult[response - 1]);
         }
 
-        public void SearchEmployeeScheduleByCPF(string CPF)
+        public static void SearchEmployeeScheduleByCPF(string CPF)
         {
             var FilterdEmployee = (
                 from employee in EmployeesList
@@ -345,7 +367,8 @@ namespace LetsPet_Employees
             }
         }
 
-        public void SearchEmployeeScheduleByName(string Name) {
+        public static void SearchEmployeeScheduleByName(string Name)
+        {
             var FilterdEmployees = (
                     from employee in EmployeesList
                     where employee.Name.Contains(Name)
@@ -353,7 +376,8 @@ namespace LetsPet_Employees
                     );
             var ListResult = FilterdEmployees.ToList();
 
-            if (ListResult.Count() == 0) {
+            if (ListResult.Count() == 0)
+            {
                 Console.WriteLine($"Nenhum funcionário com o nome {Name} foi encontrado no sistema.");
                 return;
             }
@@ -375,7 +399,7 @@ namespace LetsPet_Employees
             PrintEmployeeSchedule(ListResult[response - 1]);
         }
         //Mudar isso daqui pra private dps dos testes 
-        private void PrintEmployee(Employee employee)
+        private static void PrintEmployee(Employee employee)
         {
             Console.Clear();
             Console.WriteLine("-------- Ficha do funcionário ---------");
@@ -452,7 +476,7 @@ namespace LetsPet_Employees
             Console.WriteLine($"{response} animais agressivos.");
             Console.WriteLine();
         }
-        private void PrintEmployeeSchedule(Employee employee)
+        private static void PrintEmployeeSchedule(Employee employee)
         {
             Console.Clear();
             Console.WriteLine($"--- Agenda do funcionário {employee.Name}---");
@@ -460,6 +484,58 @@ namespace LetsPet_Employees
             Console.WriteLine($"Horário de inicio intervalo: {employee.Schedule[1]:HH:mm}");
             Console.WriteLine($"Horário de fim intervalo: {employee.Schedule[2]:HH:mm}");
             Console.WriteLine($"Horário de saída: {employee.Schedule[3]:HH:mm}");
+        }
+        private static void Header()
+        {
+            Console.Clear();
+            Console.WriteLine("------- Cadastro de funcionário --------");
+        }
+        private static void MenuHeader()
+        {
+            Console.Clear();
+            Console.WriteLine("------- MENU DE FUNCIONÁRIOS -----------");
+            foreach (var Option in OptionsList)
+            {
+                Console.WriteLine(Option);
+            }
+            Console.WriteLine();
+        }
+        private static void MenuSearch()
+        {
+            Console.Clear();
+            Console.WriteLine("------- MENU DE FUNCIONÁRIOS -----------");
+            Console.WriteLine("Opções de pesquisa:");
+            Console.WriteLine(" 1 - Pesquisar por Nome");
+            Console.WriteLine(" 2 - Pesquisar por CPF");
+            Console.WriteLine(" 3 - Voltar ao menu");
+        }
+        private static void SearchInterface() {
+            MenuSearch();
+            do
+            {
+                response = Validation.ValidatePositiveIntInput("Selecione uma opção:");
+                if (response > 3 || response <= 0)
+                {
+                    validation = true;
+                    Console.WriteLine("Essa opção não existe!");
+                }
+            } while (validation);
+            switch (response) {
+                case 1:
+                    Console.WriteLine("Digite um nome:");
+                    var response = Console.ReadLine();
+                    SearchEmployeeByName(response);
+                    Console.ReadKey();
+                    break;
+                case 2:
+                    Console.WriteLine("Digite um CPF:");
+                    response = Console.ReadLine();
+                    SearchEmployeeByCPF(response);
+                    Console.ReadKey();
+                    break;
+                default:
+                    return;
+            }
         }
     }
 }
