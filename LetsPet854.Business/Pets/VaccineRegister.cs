@@ -8,15 +8,9 @@ using System.Threading.Tasks;
 
 namespace LetsPet854.Domain.Pets
 {
-    public class VaccineSystemRegister
+    public class VaccineRegister
     {
-        //criar vacine type e jogar longe as propriedades (vacine type na domain)
-        public string VaccineName { get; set; }
-        public Species VaccineSpecies { get; set; }
-        public int VaccineValidity { get; set; }
-
-        public List<VaccineSystemRegister> ListVaccine { get; set; }
-
+             
         public Species GetVaccineSpecies()
         {
 
@@ -70,14 +64,20 @@ namespace LetsPet854.Domain.Pets
             return vaccineValidity;
         }
 
-
-        public void AddListVaccine(VaccineSystemRegister newVaccine)
+        public VaccineType GetVaccineType()
         {
-            newVaccine.VaccineName = GetVaccineName();
-            newVaccine.VaccineSpecies = GetVaccineSpecies();
-            newVaccine.VaccineValidity = GetVaccineValidity();
+            var newVaccineType = new VaccineRegister();
+            var name = newVaccineType.GetVaccineName();
+            var species = newVaccineType.GetVaccineSpecies();
+            var validity = newVaccineType.GetVaccineValidity();
 
-            ListVaccine.Add(newVaccine);
+            var newVaccine = new VaccineType(name, species, validity);
+            return newVaccine;
+        }
+
+        public void AddListVaccine(VaccineType newVaccine)
+        {
+            newVaccine.ListVaccine.Add(newVaccine);
         }
 
     }

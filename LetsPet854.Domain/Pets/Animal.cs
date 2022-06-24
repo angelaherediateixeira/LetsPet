@@ -9,6 +9,32 @@ namespace LetsPet854.Domain.Pets
 {
     public class Animal
     {
+        public Animal(string name, Species species, string breed, string color, 
+            BreedSize breedSize, decimal weight, DateTime birthDate, Gender gender, 
+            bool castratedBool, bool diseasesBool, bool aggressiveBool, 
+            bool allergiesBool, bool physicalDisabilityBool, 
+            List<string> allergiesList, List<string> diseasesList, 
+            List<string> physicalDisabilityList) // List<PetVaccine> petVaccineList
+        {
+            Name = name;
+            Species = species;
+            Breed = breed;
+            Color = color;
+            BreedSize = breedSize;
+            Weight = weight;
+            BirthDate = birthDate;
+            Gender = gender;
+            CastratedBool = castratedBool;
+            DiseasesBool = diseasesBool;
+            AggressiveBool = aggressiveBool;
+            AllergiesBool = allergiesBool;
+            PhysicalDisabilityBool = physicalDisabilityBool;
+            AllergiesList = allergiesList;
+            DiseasesList = diseasesList;
+            PhysicalDisabilityList = physicalDisabilityList;
+            //PetVaccineList = petVaccineList;
+        }
+
         public string Name { get; set; }    
         public Species Species { get; set; }
         public string Breed { get; set; }
