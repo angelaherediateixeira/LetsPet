@@ -1,4 +1,5 @@
-﻿using LetsPet854.Domain.Services;
+﻿using LetsPet854.Domain.Pets;
+using LetsPet854.Domain.Services;
 
 namespace LetsPet854.Presentation
 {
@@ -8,7 +9,7 @@ namespace LetsPet854.Presentation
         {           
             Console.WriteLine("Bem vindo ao Let's Pet");
 
-            //ServicesMain.DefaultMenu(); // fazer menu Pets
+            Navegation.MenuPet();//menu Pets
             ServicesMain.DefaultMenu(); //menu Services
         }
     }
