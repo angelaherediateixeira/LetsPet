@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LetsPet854.Domain.Common.Enuns;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace LetsPet854.Domain
                         Console.Write($" {service.GroomingType}");
                     }
                     Console.Write($"; Espécie: {service.Species}; ");
-                    Console.Write($"Porte {service.Size}; ");
+                    Console.Write($"Porte: {service.Size}; ");
                     Console.Write($"Serviço especial: {service.Special}; ");
                     Console.Write($"Loção: {service.Lotion}; ");
                     Console.Write($"Tempo: {service.ServiceTime}h; ");
@@ -46,7 +47,7 @@ namespace LetsPet854.Domain
                         Console.Write($" {service.GroomingType}");
                     }
                     Console.Write($"; Espécie: {service.Species}; ");
-                    Console.Write($"Porte {service.Size}; ");
+                    Console.Write($"Porte: {service.Size}; ");
                     Console.Write($"Serviço especial: {service.Special}; ");
                     Console.Write($"Loção: {service.Lotion}; ");
                     Console.Write($"Tempo: {service.ServiceTime}h; ");
@@ -70,7 +71,7 @@ namespace LetsPet854.Domain
                         Console.Write($" {service.GroomingType}");
                     }
                     Console.Write($"; Espécie: {service.Species}; ");
-                    Console.Write($"Porte {service.Size}; ");
+                    Console.Write($"Porte: {service.Size}; ");
                     Console.Write($"Serviço especial: {service.Special}; ");
                     Console.Write($"Loção: {service.Lotion}; ");
                     Console.Write($"Tempo: {service.ServiceTime}h; ");
@@ -78,6 +79,38 @@ namespace LetsPet854.Domain
                 }
             }
 
+        }
+
+        public static void EnumServiceType()
+        {
+            foreach (ServiceType service in Enum.GetValues(typeof(ServiceType)))
+            {
+                Console.WriteLine($"{((int)service)} - {service}");
+            }
+        }
+
+        public static void EnumBreedSize()
+        {
+            foreach (BreedSize service in Enum.GetValues(typeof(BreedSize)))
+            {
+                Console.WriteLine($"{((int)service)} - {service}");
+            }
+        }
+
+        public static void EnumSpecies()
+        {
+            foreach (Species service in Enum.GetValues(typeof(Species)))
+            {
+                Console.WriteLine($"{((int)service)} - {service}");
+            }
+        }
+
+        public static void EnumGroomingType()
+        {
+            foreach (GroomingType service in Enum.GetValues(typeof(GroomingType)))
+            {
+                Console.WriteLine($"{((int)service)} - {service}");
+            }
         }
     }
 }
