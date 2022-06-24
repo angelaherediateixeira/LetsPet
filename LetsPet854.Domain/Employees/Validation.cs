@@ -18,11 +18,23 @@ namespace LetsPet_Employees
             Regex RgxPhone = new(@"^\(?\d{2}\)?\d{4,5}-?\d{4}$");
             if (!RgxPhone.Match(phone).Success)
             {
-                Console.WriteLine("Telefone digitado inválido!\nDigite no formato (12)12345-1234");
+                Console.WriteLine("Telefone digitado inválido! \nDigite no formato (12)12345-1234");
                 return false;
             }
             return true;
         }
+
+        public static bool IsCellphoneValid(string celphone)
+        {
+            Regex RgxCellphone = new(@"^\(?\d{2}\)\d{5}-?\d{4}$");
+            if (!RgxCellphone.Match(celphone).Success)
+            {
+                Console.WriteLine("Celular digitado inválido! \nDigite no formato (12)12345 - 1234");
+                return false;
+            }
+            return true;
+        }
+
         public static bool IsCpfValid(string cpf)
         {
             Regex RgxCpf = new(@"^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$");
@@ -74,11 +86,35 @@ namespace LetsPet_Employees
             Regex RgxBankCode = new(@"\d{3}");
             if (!RgxBankCode.Match(bankCode).Success)
             {
-                Console.WriteLine("Código do banco inválido! \nDigite no formato de três números 123");
+                Console.WriteLine("Código do banco inválido! \nDigite no formato: 123");
                 return false;
             }
             return true;
         }
+        
+        public static bool IsAgencyCodeValid (string agencyCode)
+        {
+            Regex RgxAgencyCode = new(@"\d{4}\-\d{1}");
+            if (!RgxAgencyCode.Match(agencyCode).Success)
+            {
+                Console.WriteLine("Codigo da agência inválido! \nDigite no formato: 1234-1");
+                return false;
+            }
+            return true;
+        }
+
+        public static bool IsAccountValid (string account)
+        {
+            Regex RgxAccount = new(@"\d{8}\-\d{1}");
+            if (!RgxAccount.Match(account).Success)
+            {
+                Console.WriteLine("Número da conta inválido! \n Digite no formato: 12345678-1");
+                return false;
+            }
+            return true;
+        }
+
+
 
         /* Render Functions 
        Render questions, validate if the input is valid and return value.
