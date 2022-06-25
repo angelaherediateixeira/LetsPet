@@ -54,7 +54,6 @@ namespace LetsPet854.Domain
                     Console.WriteLine($"Preço: {service.Price}.");
                 }
             }
-
         }
 
         public static void BySizeOrSpecies(string search)
@@ -111,6 +110,19 @@ namespace LetsPet854.Domain
             {
                 Console.WriteLine($"{((int)service)} - {service}");
             }
+        }
+
+        public static double Discount(string ServiceType, int totalAttendance)
+        {
+            double discount = 1;
+            foreach (var package in Registration.DiscountPackage)
+            {
+                if ((ServiceType == package.ServiceType) && (totalAttendance % package.TotalAttendance == 0))
+                {
+                    discount = package.PercentageDiscount;
+                }
+            }
+            return discount;
         }
     }
 }
