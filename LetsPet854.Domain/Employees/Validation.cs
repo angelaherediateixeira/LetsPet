@@ -49,7 +49,7 @@ namespace LetsPet_Employees
         public static bool IsEmailValid(string email)
         {
             Regex RgxEmail = new(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            if(!RgxEmail.Match(email).Success)
+            if (!RgxEmail.Match(email).Success)
             {
                 Console.WriteLine("Email digitado inválido! \nDigite no formato abcd@abcd.com ");
                 return false;
@@ -81,21 +81,21 @@ namespace LetsPet_Employees
             return true;
         }
 
-        public static bool IsBankCodeValid (string bankCode)
+        public static bool IsBankCodeValid(string bankCode)
         {
             Regex RgxBankCode = new(@"\d{3}");
-            if (!RgxBankCode.Match(bankCode).Success)
+            if (!RgxBankCode.Match(bankCode).Success && bankCode.Length == 3)
             {
                 Console.WriteLine("Código do banco inválido! \nDigite no formato: 123");
                 return false;
             }
             return true;
         }
-        
-        public static bool IsAgencyCodeValid (string agencyCode)
+
+        public static bool IsAgencyCodeValid(string agencyCode)
         {
             Regex RgxAgencyCode = new(@"\d{4}\-\d{1}");
-            if (!RgxAgencyCode.Match(agencyCode).Success)
+            if (!RgxAgencyCode.Match(agencyCode).Success && agencyCode.Length == 6)
             {
                 Console.WriteLine("Codigo da agência inválido! \nDigite no formato: 1234-1");
                 return false;
@@ -103,7 +103,7 @@ namespace LetsPet_Employees
             return true;
         }
 
-        public static bool IsAccountValid (string account)
+        public static bool IsAccountValid(string account)
         {
             Regex RgxAccount = new(@"\d{8}\-\d{1}");
             if (!RgxAccount.Match(account).Success)
@@ -178,6 +178,24 @@ namespace LetsPet_Employees
             {
                 response = ValidateStringInput(question, ErrorMessage);
             } while (!IsEmailValid(response));
+            return response;
+        }
+        public static string ValidateCPFInput(string question, string ErrorMessage = "Cpf digitado inválido! Digite no formato 123.123.123-12")
+        {
+            string response;
+            do
+            {
+                response = ValidateStringInput(question, ErrorMessage);
+            } while (!IsCpfValid(response));
+            return response;
+        }
+        public static string ValidateDateInput(string question, string ErrorMessage = "Data de nascimento inválida! Digite no formato dd/mm/aaaa")
+        {
+            string response;
+            do
+            {
+                response = ValidateStringInput(question, ErrorMessage);
+            } while (!IsBirthDateValid(response));
             return response;
         }
     }
