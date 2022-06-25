@@ -1,4 +1,8 @@
-﻿namespace LetsPet854.Presentation
+﻿using LetsPet_Employees;
+using LetsPet854.Domain.Pets;
+using LetsPet854.Domain.Services;
+
+namespace LetsPet854.Presentation
 {
     class Program
     {
