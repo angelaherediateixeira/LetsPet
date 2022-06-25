@@ -117,7 +117,7 @@ namespace LetsPet854.Domain
             double discount = 1;
             foreach (var package in Registration.DiscountPackage)
             {
-                if ((ServiceType == package.ServiceType) && totalAttendance == package.TotalAttendance)
+                if ((ServiceType == package.ServiceType) && (totalAttendance % package.TotalAttendance == 0))
                 {
                     discount = package.PercentageDiscount;
                 }
