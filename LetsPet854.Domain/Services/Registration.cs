@@ -10,31 +10,27 @@ namespace LetsPet854.Domain
 {
     public class Registration
     {
-        public static string Type;
-        public static string Species;
-        public static string Size;
-        public static string Name;
-        public static bool Special;
-        public static bool Lotion;
-        public static string GroomingType = "";
-        public static int ServiceTime = 1;
-        public static double Price;
-        public static int option;
-        public static int order;
-        public static string validate;
+        private static string Type { get; set; }
+        private static string Species { get; set; }
+        private static string Size { get; set; }
+        private static string Name { get; set; }
+        private static bool Special { get; set; }
+        private static bool Lotion { get; set; }
+        private static string GroomingType = "";
+        private static int ServiceTime { get { return 1; } set {; } }
+        private static double Price;
+        internal static int order;
+        internal static string validate;
         public static List<Service> ServicesList = new();
+        public static List<Discount> DiscountPackage = new();
+
 
         public static void AddService()
         {
             do
             {
                 Console.WriteLine("O que você deseja cadastrar?");
-                order = 1;
-                foreach (ServiceType service in Enum.GetValues(typeof(ServiceType)))
-                {
-                    Console.WriteLine($"{order} - {service}");
-                    order++;
-                }
+                ShowInfo.EnumServiceType();
             } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
             Type = Enum.GetName(typeof(ServiceType), order);
 
@@ -42,13 +38,8 @@ namespace LetsPet854.Domain
             {
                 do
                 {
-                    order = 1;
                     Console.WriteLine("Qual o tipo de tosa a ser realizado?");
-                    foreach (GroomingType service in Enum.GetValues(typeof(GroomingType)))
-                    {
-                        Console.WriteLine($"{order} - {service}");
-                        order++;
-                    }
+                    ShowInfo.EnumGroomingType();
                 } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 3));
                 GroomingType = Enum.GetName(typeof(GroomingType), order);
             }
@@ -59,28 +50,17 @@ namespace LetsPet854.Domain
 
             do
             {
-                order = 1;
                 Console.WriteLine("Para qual espécie é este serviço?");
-                foreach (Species especie in Enum.GetValues(typeof(Species)))
-                {
-                    Console.WriteLine($"{order} - {especie}");
-                    order++;
-                }
+                ShowInfo.EnumSpecies();
             } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
             Species = Enum.GetName(typeof(Species), order);
 
             do
             {
-                order = 1;
                 Console.WriteLine("Para qual porte é este serviço?");
-                foreach (BreedSize especie in Enum.GetValues(typeof(BreedSize)))
-                {
-                    Console.WriteLine($"{order} - {especie}");
-                    order++;
-                }
+                ShowInfo.EnumBreedSize();
             } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
             Size = Enum.GetName(typeof(BreedSize), order);
-            order = 1;
 
             do
             {
@@ -112,6 +92,25 @@ namespace LetsPet854.Domain
             Console.WriteLine("Cadastro Realizado!\n");
 
             ShowInfo.ByName(newService.Name);
+        }
+
+        public static void AddDiscount()
+        {
+            string serviceType;
+            double percentageDiscount;
+            int totalAttendance;
+
+            Console.WriteLine("Qual o tipo de serviço que terá desconto?");
+            serviceType = Console.ReadLine();
+
+            Console.WriteLine("Após quantos atendimentos?");
+            totalAttendance = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Qual a porcentagem de desconto?");
+            percentageDiscount = double.Parse(Console.ReadLine());
+
+            Discount newDiscount = new Discount(serviceType, percentageDiscount, totalAttendance);
+            DiscountPackage.Add(newDiscount);
         }
     }
 }
