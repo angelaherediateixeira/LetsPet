@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsPet854.Domain.Common
+﻿namespace LetsPet854.Domain.Common
 {
     public class Person
     {
@@ -13,7 +7,10 @@ namespace LetsPet854.Domain.Common
         public DateTime BirthDate { get; set; }
         public Contact PersonContact { get; set; }
         public DateTime RegisterDate { get; set; }
+        public Person()
+        {
 
+        }
         public Person(string cpf, string name, DateTime birthDate, Contact personContact, DateTime registerDate)
         {
             Cpf = cpf;
@@ -23,5 +20,4 @@ namespace LetsPet854.Domain.Common
             RegisterDate = registerDate;
         }
     }
-
 }

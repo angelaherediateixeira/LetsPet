@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{FCC937DF-5573-47AD-A5C3-80DCDC76ECF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsPet854.Business", "LetsPet854.Business\LetsPet854.Business.csproj", "{081CF6C2-83BC-431A-B93C-81995B94D6D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsPet854.Business", "LetsPet854.Business\LetsPet854.Business.csproj", "{081CF6C2-83BC-431A-B93C-81995B94D6D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsPet854.Domain", "LetsPet854.Domain\LetsPet854.Domain.csproj", "{58C575F9-BF54-4016-8F4E-7AF6C6A88CB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsPet854.Domain", "LetsPet854.Domain\LetsPet854.Domain.csproj", "{58C575F9-BF54-4016-8F4E-7AF6C6A88CB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsPet854.Infra", "LetsPet854.Infra\LetsPet854.Infra.csproj", "{5297AE88-B46E-444D-AAF3-5CD1DD673216}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsPet854.Infra", "LetsPet854.Infra\LetsPet854.Infra.csproj", "{5297AE88-B46E-444D-AAF3-5CD1DD673216}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
