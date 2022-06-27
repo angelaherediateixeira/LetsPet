@@ -1,4 +1,4 @@
-﻿using LetsPet854.Domain.Common.Enuns;
+using LetsPet854.Domain.Common.Enuns;
 using LetsPet854.Domain.Pets;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,6 @@ namespace LetsPet854.Business.Pets
 {
     public class RegisterAnimal
     {
-        
         public static string GetAnimalName()
         {
             string animalName;

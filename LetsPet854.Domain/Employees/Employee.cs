@@ -1,4 +1,6 @@
-﻿namespace LetsPet_Employees
+﻿using LetsPet854.Domain.Common;
+
+namespace LetsPet854.Domain.Employees
 {
     public class Employee : Person
     {
@@ -8,15 +10,14 @@
         public bool ActiveEmployee { get; private set; }
         public DateTime DismissalDate { get; private set; }
         public DateTime[] Schedule { get; private set; }
-
-        public Employee(string cpf, string name, DateTime birthDate, BankInfo bankData,
+        public Employee(string cpf, string name, Contact employeeContact, DateTime birthDate, BankInfo bankData,
             decimal salary, EmployeeServices servicesType, DateTime[] schedule)
         {
             Cpf = cpf;
             Name = name;
             BirthDate = birthDate;
+            PersonContact = employeeContact;
             RegisterDate = DateTime.Now;
-            PersonContact = new Contact();
             BankData = bankData;
             ServicesType = servicesType;
             ActiveEmployee = true;
@@ -46,11 +47,9 @@
         {
             Schedule = schedule;
         }
-
         public decimal GetSalary()
         {
             return Salaries.Values.Last();
         }
-
     }
 }
