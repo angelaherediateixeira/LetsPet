@@ -1,14 +1,16 @@
-﻿using LetsPet854.Business.Common;
+using LetsPet854.Business.Common;
 using LetsPet854.Domain.Common;
 using LetsPet854.Domain.Pets;
 
-namespace LetsPet854.Business.Pets
+namespace LetsPet854.Domain.Pets
+
 {
     public class GuardianRegister
     {
         public string GetGuardianName()
         {
             string guardianName;
+            HeaderGuardian();
             do
             {
                 Console.WriteLine("Insira o nome do tutor:");
@@ -25,6 +27,7 @@ namespace LetsPet854.Business.Pets
         public string GetGuardianCPF()
         {
             string guardianCPF;
+            HeaderGuardian();
             Console.WriteLine("Insira o CPF do tutor:");
             do
             {
@@ -36,6 +39,7 @@ namespace LetsPet854.Business.Pets
         public DateTime GetBirthDate()
         {
             DateTime guardianBirthDate;
+            HeaderGuardian();
             do
             {
                 Console.WriteLine("Qual a data de nascimento do tutor? (DD/MM/YYYY)");

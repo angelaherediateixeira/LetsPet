@@ -1,5 +1,7 @@
-﻿using LetsPet854.Domain.Pets;
+using LetsPet854.Domain.Pets;
 using LetsPet854.Domain.Services;
+using LetsPet854.Presentation.Animals;
+using LetsPet854.Presentation.Pets;
 
 namespace LetsPet854.Presentation
 {
@@ -14,6 +16,11 @@ namespace LetsPet854.Presentation
             //ServicesMain.DefaultMenu(); // fazer menu Pets
             //ServicesMain.DefaultMenu(); //menu Services
             MenuEmployee.DefaultMenu();
+            Console.WriteLine(AnimalScrens.MenuPet);
+            Navigation.MenuPrincipal();
+
+            ServicesMain.DefaultMenu(); //menu Services
+            EmployeeRegister.DefaultMenu(); //menu Employee
         }
     }
 }
