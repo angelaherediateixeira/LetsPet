@@ -1,10 +1,12 @@
-﻿namespace LetsPet854.Domain.Pets
+﻿
+namespace LetsPet854.Domain.Pets
 {
     public class GuardianRegister
     {
         public string GetGuardianName()
         {
             string guardianName;
+            HeaderGuardian();
             do
             {
                 Console.WriteLine("Insira o nome do tutor:");
@@ -21,6 +23,7 @@
         public string GetGuardianCPF()
         {
             string guardianCPF;
+            HeaderGuardian();
             Console.WriteLine("Insira o CPF do tutor:");
             do
             {
@@ -32,6 +35,7 @@
         public DateTime GetBirthDate()
         {
             DateTime guardianBirthDate;
+            HeaderGuardian();
             do
             {
                 Console.WriteLine("Qual a data de nascimento do tutor? (DD/MM/YYYY)");
@@ -44,8 +48,10 @@
             return guardianBirthDate;
         }
 
-        public Guardian RegisterGuardian()
+        public static void RegisterGuardian()
         {
+            Console.Clear();
+            Console.WriteLine("Cadastrando Tutor");
             var guardian = new GuardianRegister();
             var name = guardian.GetGuardianName();
             var cpf = guardian.GetGuardianCPF();
@@ -57,8 +63,17 @@
 
             //(List<Animal> petList, string cpf, string name, DateTime birthDate, Contact personContact, DateTime registerDate) :base (cpf, name, birthDate, personContact, registerDate)
 
+            Console.WriteLine("Tutor Cadastrado com Sucesso!!");
+
             Guardian newGuardian = new(cpf, name, birthDate, contact, dateRegister); //petList
-            return newGuardian;
+            Guardian.GuardiansList.Add(newGuardian);  
+
+
+        }
+        private static void HeaderGuardian()
+        {
+            Console.Clear();
+            Console.WriteLine("------- CADASTRO DE TUTOR -------");
         }
     }
 }
