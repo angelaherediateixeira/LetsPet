@@ -46,17 +46,6 @@
             MobileNumber = mobileNumber;
             Email = email;
         }
-        public void PrintContact()
-        {
-            Console.WriteLine($"WhatsApp: {MobileNumber}");
-            Console.WriteLine($"Telefone Fixo: {Phone}");
-            Console.WriteLine($"Email: {Email}");
-            Console.WriteLine($"CEP: {ZipCode}");
-            Console.WriteLine($"Endereço: {Street}, {Number}");
-            Console.WriteLine($"Complemento: {AdditionalAddressInfo}");
-            Console.WriteLine($"Bairro:{District}");
-            Console.WriteLine($"Cidade: {City} - {State}");
-        }
     }
 }
 

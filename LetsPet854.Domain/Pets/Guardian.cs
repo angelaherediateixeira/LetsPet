@@ -27,7 +27,8 @@ namespace LetsPet854.Domain.Pets
             Console.WriteLine("IMPRIMINDO TUTOR:");
             Console.WriteLine($"Nome: {Name}");
             Console.WriteLine($"CPF: {Cpf}");
-            PersonContact.PrintContact();
+            // Squad Employee -> A printcontact passou para camada presentation. Mudamos o nome do método para PrintContactInfo();
+            // PersonContact.PrintContact();
             PrintPetList();
         }
 

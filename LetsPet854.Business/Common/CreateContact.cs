@@ -34,7 +34,7 @@ namespace LetsPet854.Business.Common
                 phone = "";
 
             Header();
-            if (OptionalInfos("Alguma informamação adicional?"))
+            if (OptionalInfos("Alguma informação adicional?"))
             {
                 addInfo = Validation.ValidateStringInput("Descreva a observação:", "O campo de observação está em branco.");
             }
