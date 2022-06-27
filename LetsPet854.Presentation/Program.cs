@@ -2,6 +2,7 @@
 using LetsPet854.Domain.Pets;
 using LetsPet854.Domain.Services;
 using LetsPet854.Presentation.Animals;
+using LetsPet854.Presentation.Pets;
 
 namespace LetsPet854.Presentation
 {
@@ -12,6 +13,7 @@ namespace LetsPet854.Presentation
             Console.WriteLine("Bem vindo ao Let's Pet");
 
             Console.WriteLine(AnimalScrens.MenuPet);
+            Navigation.MenuPrincipal();
 
             ServicesMain.DefaultMenu(); //menu Services
             EmployeeRegister.DefaultMenu(); //menu Employee

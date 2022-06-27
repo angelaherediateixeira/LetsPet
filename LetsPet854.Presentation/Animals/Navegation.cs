@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LetsPet854.Business.Pets;
+using LetsPet854.Domain.Pets;
+using LetsPet854.Presentation.Animals;
 
-
-namespace LetsPet854.Domain.Pets
+namespace LetsPet854.Presentation.Pets
 {
-    public class Navegation
+    public class Navigation
     {
         public static int optionInput;
         public static void MenuPrincipal()
         {
-            Console.Clear();
             do
             {
                Console.WriteLine();
@@ -23,23 +24,41 @@ namespace LetsPet854.Domain.Pets
                 switch (optionInput)
                 {
                     case 1:
+                        Console.Clear();
                         Console.WriteLine("Tela para Cadastrar Tutor");
-                        
+                        GuardianRegister.RegisterGuardian();
+                        MenuHeader();
                         break;
                     case 2:
+                        Console.Clear();
                         Console.WriteLine("Tela para Cadastrar Pet");
-                        //Animal.RegisterAnimal();
+                        RegisterAnimal.AnimalRegister();
+                        MenuHeader();
                         break;
                     case 3:
+                        Console.Clear();
                         Console.WriteLine("Tela para Consultar Tutor");
-                        //Search.Options(); fazer consulta
+                        Console.WriteLine("Digite um CPF:");
+                        var response = Console.ReadLine();
+                        var guardianSearchResult = SearchGuardian.SearchGuardianByCPF(response);
+                        if (guardianSearchResult == null)
+                        {
+                            Console.ReadKey();
+                        }
+                        PrintGuardian.PrintTutor(guardianSearchResult);
+                        Console.ReadKey();
+                        MenuHeader();
                         break;
                     case 4:
+                        Console.Clear();
                         Console.WriteLine("Tela para Consultar Pet");
+                        Console.WriteLine("Não implementado");
                         //Search.Options(); fazer consulta
                         break;
                     case 5:
+                        Console.Clear();
                         Console.WriteLine("volatr ao menu inicial");
+                        Console.WriteLine("Não implementado");
                         // voltar a tela inicial
                         break;
                     default:
@@ -50,7 +69,13 @@ namespace LetsPet854.Domain.Pets
             } while (true);
         }
 
-
+        private static void MenuHeader()
+        {
+            Console.Clear();
+            Console.WriteLine("------- MENU DE PETS E TUTORES -----------");
+            Console.WriteLine(AnimalScrens.MenuPet);
+            MenuPrincipal();
+        }
 
 
 
