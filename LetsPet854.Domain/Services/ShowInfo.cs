@@ -9,28 +9,21 @@ namespace LetsPet854.Domain
 {
     public class ShowInfo
     {
+        public static int count = 0;
         public static void ByType(string search)
         {
             foreach (var service in Registration.ServicesList)
             {
                 if (search == service.Type)
                 {
-                    Console.WriteLine($"Nome do serviço: {service.Name}");
-                    Console.Write("Informações do serviço: ");
-                    Console.Write(service.Type);
-                    if (service.GroomingType != null)
-                    {
-                        Console.Write($" {service.GroomingType}");
-                    }
-                    Console.Write($"; Espécie: {service.Species}; ");
-                    Console.Write($"Porte: {service.Size}; ");
-                    Console.Write($"Serviço especial: {service.Special}; ");
-                    Console.Write($"Loção: {service.Lotion}; ");
-                    Console.Write($"Tempo: {service.ServiceTime}h; ");
-                    Console.WriteLine($"Preço: {service.Price}.");
+                    Print.PrintService(service);
+                }
+                else
+                {
+                    count++;
                 }
             }
-
+            Console.WriteLine((count == 0) ? null : "Serviço não encontrado");
         }
 
         public static void ByName(string search)
@@ -39,22 +32,12 @@ namespace LetsPet854.Domain
             {
                 if (search == service.Name)
                 {
-                    Console.WriteLine($"Nome do serviço: {service.Name}");
-                    Console.Write("Informações do serviço: ");
-                    Console.Write(service.Type);
-                    if (service.GroomingType != null)
-                    {
-                        Console.Write($" {service.GroomingType}");
-                    }
-                    Console.Write($"; Espécie: {service.Species}; ");
-                    Console.Write($"Porte: {service.Size}; ");
-                    Console.Write($"Serviço especial: {service.Special}; ");
-                    Console.Write($"Loção: {service.Lotion}; ");
-                    Console.Write($"Tempo: {service.ServiceTime}h; ");
-                    Console.WriteLine($"Preço: {service.Price}.");
+                    Print.PrintService(service);
                 }
             }
         }
+
+        
 
         public static void BySizeOrSpecies(string search)
         {
@@ -62,55 +45,18 @@ namespace LetsPet854.Domain
             {
                 if (search == service.Species || search == service.Size)
                 {
-                    Console.WriteLine($"Nome do serviço: {service.Name}");
-                    Console.Write("Informações do serviço: ");
-                    Console.Write(service.Type);
-                    if (service.GroomingType != null)
-                    {
-                        Console.Write($" {service.GroomingType}");
-                    }
-                    Console.Write($"; Espécie: {service.Species}; ");
-                    Console.Write($"Porte: {service.Size}; ");
-                    Console.Write($"Serviço especial: {service.Special}; ");
-                    Console.Write($"Loção: {service.Lotion}; ");
-                    Console.Write($"Tempo: {service.ServiceTime}h; ");
-                    Console.WriteLine($"Preço: {service.Price}.");
+                    Print.PrintService(service);
+                }
+                else
+                {
+                    count++;
                 }
             }
-
+            Console.WriteLine((count == 0) ? null : "Serviço não encontrado");
         }
 
-        public static void EnumServiceType()
-        {
-            foreach (ServiceType service in Enum.GetValues(typeof(ServiceType)))
-            {
-                Console.WriteLine($"{((int)service)} - {service}");
-            }
-        }
 
-        public static void EnumBreedSize()
-        {
-            foreach (BreedSize service in Enum.GetValues(typeof(BreedSize)))
-            {
-                Console.WriteLine($"{((int)service)} - {service}");
-            }
-        }
 
-        public static void EnumSpecies()
-        {
-            foreach (Species service in Enum.GetValues(typeof(Species)))
-            {
-                Console.WriteLine($"{((int)service)} - {service}");
-            }
-        }
-
-        public static void EnumGroomingType()
-        {
-            foreach (GroomingType service in Enum.GetValues(typeof(GroomingType)))
-            {
-                Console.WriteLine($"{((int)service)} - {service}");
-            }
-        }
 
         public static double Discount(string ServiceType, int totalAttendance)
         {

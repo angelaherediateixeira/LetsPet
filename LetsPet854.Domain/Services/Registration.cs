@@ -18,8 +18,9 @@ namespace LetsPet854.Domain
         private static bool Lotion { get; set; }
         private static string GroomingType = "";
         private static int ServiceTime { get { return 1; } set {; } }
+        private static int Employees { get ;  set; }
         private static double Price;
-        internal static int order;
+        internal static int option;
         internal static string validate;
         public static List<Service> ServicesList = new();
         public static List<Discount> DiscountPackage = new();
@@ -27,67 +28,43 @@ namespace LetsPet854.Domain
 
         public static void AddService()
         {
-            do
-            {
-                Console.WriteLine("O que você deseja cadastrar?");
-                ShowInfo.EnumServiceType();
-            } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
-            Type = Enum.GetName(typeof(ServiceType), order);
+            Console.WriteLine("O que você deseja cadastrar?");
+            PrintEnum.ServiceType();
+            Type = Enum.GetName(typeof(ServiceType), Validations.Options(1, 2));
 
-            if (order == 2)
+            if (Type == "Tosa")
             {
-                do
-                {
-                    Console.WriteLine("Qual o tipo de tosa a ser realizado?");
-                    ShowInfo.EnumGroomingType();
-                } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 3));
-                GroomingType = Enum.GetName(typeof(GroomingType), order);
+                Console.WriteLine("Qual o tipo de tosa a ser realizado?");
+                PrintEnum.GroomingType();
+                GroomingType = Enum.GetName(typeof(GroomingType), Validations.Options(1, 3));
             }
             else
             {
                 GroomingType = null;
             }
 
-            do
-            {
-                Console.WriteLine("Para qual espécie é este serviço?");
-                ShowInfo.EnumSpecies();
-            } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
-            Species = Enum.GetName(typeof(Species), order);
+            Console.WriteLine("Para qual espécie é este serviço?");
+            PrintEnum.Species();
+            Species = Enum.GetName(typeof(Species), Validations.Options(1, 2));
 
-            do
-            {
-                Console.WriteLine("Para qual porte é este serviço?");
-                ShowInfo.EnumBreedSize();
-            } while (!int.TryParse(Console.ReadLine(), out order) || (order < 1 || order > 2));
-            Size = Enum.GetName(typeof(BreedSize), order);
+            Console.WriteLine("Para qual porte é este serviço?");
+            PrintEnum.BreedSize();
+            Size = Enum.GetName(typeof(BreedSize), Validations.Options(1, 2));
+            Employees = (Size == "Grande")? 2 : 1;
 
-            do
-            {
-                Console.WriteLine("É um serviço especial (S/N)?");
-                validate = Console.ReadLine().ToUpper();
-            } while (!Validations.Resposta(validate));
-            Special = Validations.SimNao(validate);
+            Console.WriteLine("É um serviço especial (S/N)?");
+            Special = Validations.YesOrNo();
 
-            do
-            {
-                Console.WriteLine("Esse serviço utilizará loção (S/N)?");
-                validate = Console.ReadLine().ToUpper();
-            } while (!Validations.Resposta(validate));
-            Lotion = Validations.SimNao(validate);
+            Console.WriteLine("Esse serviço utilizará loção (S/N)?");
+            Lotion = Validations.YesOrNo();
 
-            do
-            {
-                Console.WriteLine("Qual o nome deste serviço?");
-                Name = Console.ReadLine();
-            } while (string.IsNullOrWhiteSpace(Name)); //não aceitar nomes já existentes
+            Console.WriteLine("Qual o nome deste serviço?");
+            Name = Validations.ExistentName();
 
-            do
-            {
-                Console.WriteLine("Qual o valor deste serviço?");
-            } while (!double.TryParse(Console.ReadLine(), out Price));
+            Console.WriteLine("Qual o valor deste serviço?");
+            Price = Validations.ValidDouble();
 
-            Service newService = new Service(Type, Species, Size, Name, Special, Lotion, GroomingType, ServiceTime, Price);
+            Service newService = new Service(Type, Species, Size, Name, Special, Lotion, GroomingType, ServiceTime, Employees, Price);
             ServicesList.Add(newService);
             Console.WriteLine("Cadastro Realizado!\n");
 
