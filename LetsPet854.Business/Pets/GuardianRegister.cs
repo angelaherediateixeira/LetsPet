@@ -1,4 +1,8 @@
-﻿namespace LetsPet854.Domain.Pets
+﻿using LetsPet854.Business.Common;
+using LetsPet854.Domain.Common;
+using LetsPet854.Domain.Pets;
+
+namespace LetsPet854.Business.Pets
 {
     public class GuardianRegister
     {
@@ -51,13 +55,12 @@
             var cpf = guardian.GetGuardianCPF();
             var birthDate = guardian.GetBirthDate();
             //var petlist = guardian.PetList;
-            ContactServices newcontact = new ContactServices();
-            var contact = newcontact.RegisterContact();
+            Contact newcontact = CreateContact.GenerateContact();
             var dateRegister = DateTime.Now;
 
             //(List<Animal> petList, string cpf, string name, DateTime birthDate, Contact personContact, DateTime registerDate) :base (cpf, name, birthDate, personContact, registerDate)
 
-            Guardian newGuardian = new(cpf, name, birthDate, contact, dateRegister); //petList
+            Guardian newGuardian = new(cpf, name, birthDate, newcontact, dateRegister); //petList
             return newGuardian;
         }
     }

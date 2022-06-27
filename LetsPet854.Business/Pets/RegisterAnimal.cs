@@ -1,16 +1,12 @@
 ﻿using LetsPet854.Domain.Common.Enuns;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LetsPet854.Domain.Pets;
 
-namespace LetsPet854.Domain.Pets
+namespace LetsPet854.Business.Pets
 {
     public class RegisterAnimal
     {
-        
-        
+
+
         public string GetAnimalName()
         {
             string animalName;
@@ -309,7 +305,7 @@ namespace LetsPet854.Domain.Pets
             }
             return physicalDisability;
         }
-     
+
         public Animal AnimalRegister()
         {
             var pet = new RegisterAnimal();
@@ -329,7 +325,7 @@ namespace LetsPet854.Domain.Pets
             var allergiesList = pet.GetAllergiesList();
             var diseasesList = pet.GetDiseasesList();
             var physicalDisabilityList = pet.GetPhysicalDisabilityList();
-            
+
             //var vaccine        
 
             Animal pet1 = new(name, species, breed, color, breedSize, weight, birthDate, gender, castratedBool, diseaseBool, aggressiveBool, allergiesBool, physicalDisabilityBool, allergiesList, diseasesList, physicalDisabilityList);
