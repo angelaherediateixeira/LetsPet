@@ -1,16 +1,11 @@
-﻿using LetsPet854.Domain.Common;
-using LetsPet854.Domain.Common.Enuns;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LetsPet854.Domain.Common.Enuns;
+using LetsPet854.Domain.Pets;
 
-namespace LetsPet854.Domain.Pets
+namespace LetsPet854.Business.Pets
 {
     public class VaccineRegister
     {
-             
+
         public Species GetVaccineSpecies()
         {
 

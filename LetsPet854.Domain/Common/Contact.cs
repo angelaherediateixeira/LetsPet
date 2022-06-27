@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsPet854.Domain.Common
+﻿namespace LetsPet854.Domain.Common
 {
     public class Contact
     {
-        protected string Street { get; set; }
-        protected int Number { get; set; }
-        protected string AdditionalAddressInfo { get; set; }
-        protected string District { get; set; }
-        protected string City { get; set; }
-        protected string State { get; set; }
-        protected string ZipCode { get; set; }
-        protected string Phone { get; set; }
-        protected string MobileNumber { get; set; }
-        protected string Email { get; set; }
+        public string Street { get; set; }
+        public int Number { get; set; }
+        public string AdditionalAddressInfo { get; set; }
+        public string District { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string ZipCode { get; set; }
+        public string Phone { get; set; }
+        public string MobileNumber { get; set; }
+        public string Email { get; set; }
 
         public Contact(string street, int number, string district,
             string city, string state, string zipcode,
@@ -52,21 +46,6 @@ namespace LetsPet854.Domain.Common
             MobileNumber = mobileNumber;
             Email = email;
         }
-
-        public void PrintContact()
-        {
-            Console.WriteLine($"WhatsApp: {MobileNumber}");
-            Console.WriteLine($"Telefone Fixo: {Phone}");
-            Console.WriteLine($"Email: {Email}");
-            Console.WriteLine($"CEP: {ZipCode}");
-            Console.WriteLine($"Endereço: {Street}, {Number}");
-            Console.WriteLine($"Complemento: {AdditionalAddressInfo}");
-            Console.WriteLine($"Bairro:{District}");
-            Console.WriteLine($"Cidade: {City} - {State}");
-            Console.WriteLine("\nPETS DO TUTOR:");
-        }
-
-
     }
 }
 
