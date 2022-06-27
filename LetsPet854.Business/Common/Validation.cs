@@ -68,8 +68,8 @@ namespace LetsPet854.Business.Common
         }
         public static bool IsBankCodeValid(string bankCode)
         {
-            Regex RgxBankCode = new(@"\d{3}");
-            if (!RgxBankCode.Match(bankCode).Success && bankCode.Length == 3)
+            Regex RgxBankCode = new(@"^\d{3}$");
+            if (!RgxBankCode.Match(bankCode).Success)
             {
                 Console.WriteLine("Código do banco inválido! \nDigite no formato: 123");
                 return false;
@@ -78,17 +78,17 @@ namespace LetsPet854.Business.Common
         }
         public static bool IsAgencyCodeValid(string agencyCode)
         {
-            Regex RgxAgencyCode = new(@"\d{4}\-\d{1}");
-            if (!RgxAgencyCode.Match(agencyCode).Success && agencyCode.Length == 6)
+            Regex RgxAgencyCode = new(@"^\d{4,5}$");
+            if (!RgxAgencyCode.Match(agencyCode).Success)
             {
-                Console.WriteLine("Codigo da agência inválido! \nDigite no formato: 1234-1");
+                Console.WriteLine("Codigo da agência inválido! \nDigite no formato: 12341");
                 return false;
             }
             return true;
         }
         public static bool IsAccountValid(string account)
         {
-            Regex RgxAccount = new(@"\d{8}\-\d{1}");
+            Regex RgxAccount = new(@"^\d{8}\-\d{1}$");
             if (!RgxAccount.Match(account).Success)
             {
                 Console.WriteLine("Número da conta inválido! \n Digite no formato: 12345678-1");
@@ -173,6 +173,33 @@ namespace LetsPet854.Business.Common
             {
                 response = ValidateStringInput(question, ErrorMessage);
             } while (!IsBirthDateValid(response));
+            return response;
+        }
+        public static string ValidateBankCodeInput(string question, string ErrorMessage = "Código de banco errado. Digite apenas 3 dígitos")
+        {
+            string response;
+            do
+            {
+                response = ValidateStringInput(question, ErrorMessage);
+            } while (!IsBankCodeValid(response));
+            return response;
+        }
+        public static string ValidateAgencyNumberInput(string question, string ErrorMessage = "Código de agência errado. Digite apenas 4 ou 5 dígitos")
+        {
+            string response;
+            do
+            {
+                response = ValidateStringInput(question, ErrorMessage);
+            } while (!IsAgencyCodeValid(response));
+            return response;
+        }
+        public static string ValidateAccountNumberInput(string question, string ErrorMessage = "Código de agência errado. Digite apenas 4 ou 5 dígitos")
+        {
+            string response;
+            do
+            {
+                response = ValidateStringInput(question, ErrorMessage);
+            } while (!IsAccountValid(response));
             return response;
         }
     }

@@ -23,36 +23,16 @@ namespace LetsPet854.Business.Employees
             name = Validation.ValidateStringInput("Digite o nome do funcionário", "Nome digitado está em branco");
             Header();
             cpf = Validation.ValidateCPFInput("Digite o CPF do funcionário:");
-            Header();
+            Header();            
             birthDate = Convert.ToDateTime(Validation.ValidateDateInput("Digite a data de nascimento do funcionário:"));
             Header();
-            do
-            {
-                Console.WriteLine("Digite o código do banco:");
-                aux = Console.ReadLine();
-                Validation.IsBankCodeValid(aux);
-            } while (!Validation.IsBankCodeValid(aux));
-            bankCode = aux;
+            bankCode = Validation.ValidateBankCodeInput("Digite o código do banco:");
 
             Header();
-            do
-            {
-                Console.WriteLine("Digite o número da agência:");
-                aux = Console.ReadLine();
-                Validation.IsAgencyCodeValid(aux);
-
-            } while (!Validation.IsAgencyCodeValid(aux));
-            agency = aux;
+            agency = Validation.ValidateAgencyNumberInput("Digite o número da agência:");
 
             Header();
-            do
-            {
-                Console.WriteLine("Digite o número da conta:");
-                aux = Console.ReadLine();
-                Validation.IsAccountValid(aux);
-
-            } while (!Validation.IsAccountValid(aux));
-            accountNumber = aux;
+            accountNumber = Validation.ValidateAccountNumberInput("Digite o número da conta:");
 
             Header();
             do
@@ -171,7 +151,7 @@ namespace LetsPet854.Business.Employees
             Header();
             do
             {
-                Console.WriteLine("Digite o porte de animal que o funcionário irá atender: \n1 - Pequeno porte \n2 - Grande porte \n3- Ambos ");
+                Console.WriteLine("Digite o porte de animal que o funcionário irá atender: \n1 - Pequeno porte \n2 - Grande porte \n3 - Ambos ");
                 aux = Console.ReadLine().Trim();
                 if (!(aux.Equals("1") || aux.Equals("2") || aux.Equals("3")))
                 {
@@ -195,7 +175,7 @@ namespace LetsPet854.Business.Employees
             Header();
             do
             {
-                Console.WriteLine("O funcionário consegue lidar com animais que precisam de necessidades especiais? \n1 - sim \n 2 - não");
+                Console.WriteLine("O funcionário consegue lidar com animais que precisam de necessidades especiais? \n1 - Sim \n2 - Não");
                 aux = Console.ReadLine().Trim();
                 if (!(aux.Equals("1") || aux.Equals("2")))
                 {
@@ -211,7 +191,7 @@ namespace LetsPet854.Business.Employees
             Header();
             do
             {
-                Console.WriteLine("O funcionário consegue lidar com animais agressigos? \n1 - sim \n2 - não");
+                Console.WriteLine("O funcionário consegue lidar com animais agressigos? \n1 - Sim \n2 - Não");
                 aux = Console.ReadLine().Trim();
                 if (!(aux.Equals("1") || aux.Equals("2")))
                 {

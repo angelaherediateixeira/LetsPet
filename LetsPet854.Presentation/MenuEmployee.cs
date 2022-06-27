@@ -85,6 +85,11 @@ namespace LetsPet854.Presentation
                     Console.WriteLine("Digite um nome:");
                     var response = Console.ReadLine();
                     var employeesSearchResult = SearchEmployees.SearchEmployeeByName(response);
+                    if (employeesSearchResult == null)
+                    {
+                        Console.ReadKey();
+                        break;
+                    }
                     PrintEmployee.PrintListEmployee(employeesSearchResult);
                     Console.ReadKey();
                     break;
@@ -92,6 +97,10 @@ namespace LetsPet854.Presentation
                     Console.WriteLine("Digite um CPF:");
                     response = Console.ReadLine();
                     var employeeSearchResult = SearchEmployees.SearchEmployeeByCPF(response);
+                    if (employeeSearchResult == null) {
+                        Console.ReadKey();
+                        break;
+                    }
                     PrintEmployee.PrintSelectedEmployee(employeeSearchResult);
                     Console.ReadKey();
                     break;
