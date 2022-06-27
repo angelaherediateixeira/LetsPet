@@ -14,7 +14,7 @@ Nome do colaborador: {employee.Name}
 CPF: {employee.Cpf}
 Nascimento: {employee.BirthDate:dd/MM/yyyy}
 Data de registro: {employee.RegisterDate:dd/MM/yyyy}
-{ (employee.ActiveEmployee ? "Funcinário Ativo" : "Funcionário Inativo \n Data de Demissão: {employee.DismissalDate:dd/MM/yyyy}")}
+{ (employee.ActiveEmployee ? "Funcinário Ativo" : $"Funcionário Inativo \n Data de Demissão: {employee.DismissalDate:dd/MM/yyyy}")}
 
 --- Informações de contrato ---
 ");
@@ -45,7 +45,8 @@ Nº da conta: {employee.BankData.AccountNumber}
 - Informações para pagamento -
 Salário: ${employee.GetSalary()}
 
-PIX\nTipo: {employee.BankData.PixType}
+PIX
+Tipo: {employee.BankData.PixType}
 Chave: {employee.BankData.Pix}
 
 --- Serviços prestados ---
