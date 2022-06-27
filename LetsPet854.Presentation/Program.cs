@@ -10,10 +10,8 @@ namespace LetsPet854.Presentation
         {
             Console.WriteLine("Bem vindo ao Let's Pet");
 
-            Navegation.MenuPet();//menu Pets
+            //Navegation.MenuPet();//menu Pets
             ServicesMain.DefaultMenu(); //menu Services
-            //ServicesMain.DefaultMenu(); // fazer menu Pets
-            //ServicesMain.DefaultMenu(); //menu Services
             EmployeeRegister.DefaultMenu();
         }
     }

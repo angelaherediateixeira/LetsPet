@@ -15,19 +15,16 @@ namespace LetsPet854.Domain
             {
                 if (search == service.Type)
                 {
-                    Console.WriteLine($"Nome do serviço: {service.Name}");
-                    Console.Write("Informações do serviço: ");
-                    Console.Write(service.Type);
-                    if (service.GroomingType != null)
-                    {
-                        Console.Write($" {service.GroomingType}");
-                    }
-                    Console.Write($"; Espécie: {service.Species}; ");
-                    Console.Write($"Porte: {service.Size}; ");
-                    Console.Write($"Serviço especial: {service.Special}; ");
-                    Console.Write($"Loção: {service.Lotion}; ");
-                    Console.Write($"Tempo: {service.ServiceTime}h; ");
-                    Console.WriteLine($"Preço: {service.Price}.");
+                    Console.WriteLine($"Nome do serviço: {service.Name}\n" +
+                        $"Informações do serviço:\n" +
+                        $"{service.Type}{(service.GroomingType == null ? null : $" {service.GroomingType}")};" +
+                        $" Espécie: {service.Species}; " +
+                        $"Porte: {service.Size}; " +
+                        $"Serviço especial: {Special(service)}; " +
+                        $"Loção: {Lotion(service)}; " +
+                        $"Tempo: {service.ServiceTime}h; " +
+                        $"Número de funcionários: {service.Employees}; " +
+                        $"Preço: R${service.Price}.");
                 }
             }
 
@@ -39,19 +36,16 @@ namespace LetsPet854.Domain
             {
                 if (search == service.Name)
                 {
-                    Console.WriteLine($"Nome do serviço: {service.Name}");
-                    Console.Write("Informações do serviço: ");
-                    Console.Write(service.Type);
-                    if (service.GroomingType != null)
-                    {
-                        Console.Write($" {service.GroomingType}");
-                    }
-                    Console.Write($"; Espécie: {service.Species}; ");
-                    Console.Write($"Porte: {service.Size}; ");
-                    Console.Write($"Serviço especial: {service.Special}; ");
-                    Console.Write($"Loção: {service.Lotion}; ");
-                    Console.Write($"Tempo: {service.ServiceTime}h; ");
-                    Console.WriteLine($"Preço: {service.Price}.");
+                    Console.WriteLine($"Nome do serviço: {service.Name}\n" +
+                        $"Informações do serviço:\n" +
+                        $"{service.Type}{(service.GroomingType == null ? null : $" {service.GroomingType}")};" +
+                        $" Espécie: {service.Species}; " +
+                        $"Porte: {service.Size}; " +
+                        $"Serviço especial: {Special(service)}; " +
+                        $"Loção: {Lotion(service)}; " +
+                        $"Tempo: {service.ServiceTime}h; " +
+                        $"Número de funcionários: {service.Employees}; " +
+                        $"Preço: R${service.Price}.");
                 }
             }
         }
@@ -62,23 +56,24 @@ namespace LetsPet854.Domain
             {
                 if (search == service.Species || search == service.Size)
                 {
-                    Console.WriteLine($"Nome do serviço: {service.Name}");
-                    Console.Write("Informações do serviço: ");
-                    Console.Write(service.Type);
-                    if (service.GroomingType != null)
-                    {
-                        Console.Write($" {service.GroomingType}");
-                    }
-                    Console.Write($"; Espécie: {service.Species}; ");
-                    Console.Write($"Porte: {service.Size}; ");
-                    Console.Write($"Serviço especial: {service.Special}; ");
-                    Console.Write($"Loção: {service.Lotion}; ");
-                    Console.Write($"Tempo: {service.ServiceTime}h; ");
-                    Console.WriteLine($"Preço: {service.Price}.");
+                    Console.WriteLine($"Nome do serviço: {service.Name}\n" +
+                        $"Informações do serviço:\n" +
+                        $"{service.Type}{(service.GroomingType == null ? null : $" {service.GroomingType}")};" +
+                        $" Espécie: {service.Species}; " +
+                        $"Porte: {service.Size}; " +
+                        $"Serviço especial: {Special(service)}; " +
+                        $"Loção: {Lotion(service)}; " +
+                        $"Tempo: {service.ServiceTime}h; ]" +
+                        $"Número de funcionários: {service.Employees}; " +
+                        $"Preço: R${service.Price}.");
                 }
             }
 
         }
+
+        static string Special(Service newService) => newService.Special ? "Sim" : "Não";
+
+        static string Lotion(Service newService) => newService.Lotion ? "Sim" : "Não";
 
         public static void EnumServiceType()
         {
