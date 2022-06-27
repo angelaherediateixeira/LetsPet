@@ -16,10 +16,6 @@ namespace LetsPet854.Domain.Pets
         {
             //PetList = petList;
         }
-
-
-
-
         
         // MÉTODOS
         public void PrintGuardian()

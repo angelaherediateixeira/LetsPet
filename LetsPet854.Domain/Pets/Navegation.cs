@@ -3,25 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LetsPet854.Domain.Pets;
+
 
 namespace LetsPet854.Domain.Pets
 {
     public class Navegation
     {
         public static int optionInput;
-        public static void MenuPet()
+        public static void MenuPrincipal()
         {
             Console.Clear();
             do
             {
-                Console.WriteLine("Cadastro de Pets e Tutores\n");
-                Console.WriteLine(@"Selecione umas das opções abaixo:
-1- Cadastrar Tutor
-2- Cadastrar Pet
-3- Consultar Tutor
-4- Consultar Pet
-5- Voltar ao menu principal");
+               Console.WriteLine();
                 while (!int.TryParse(Console.ReadLine(), out optionInput) || (optionInput < 1 || optionInput > 5))
                 {
                     Console.WriteLine("\nDigite um valor válido: ");
@@ -30,7 +24,7 @@ namespace LetsPet854.Domain.Pets
                 {
                     case 1:
                         Console.WriteLine("Tela para Cadastrar Tutor");
-                        // Guardian.RegisterGuardian(); cadastrar pet
+                        
                         break;
                     case 2:
                         Console.WriteLine("Tela para Cadastrar Pet");
