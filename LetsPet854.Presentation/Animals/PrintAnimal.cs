@@ -10,7 +10,7 @@ namespace LetsPet854.Presentation.Animals
     public static class PrintAnimal
     {
 
-        public static void PrintPet(Animal animal)
+        public static void PrintPet(Animal animal) 
         {
             Console.WriteLine(@$"
 ---------- IMPRIMINDO PET ----------
