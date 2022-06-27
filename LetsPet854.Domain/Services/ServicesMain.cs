@@ -40,9 +40,8 @@ namespace LetsPet854.Domain.Services
 
         public static void EndProgram()
         {
-            Console.WriteLine("Deseja realizar outro serviço (S/N)?");
-            answer = Validations.Answer();
-            if (answer == "S")
+            Console.WriteLine("Deseja realizar outra operação de serviço (S/N)?");
+            if (Validations.YesOrNo())
             {
                 DefaultMenu();
             }

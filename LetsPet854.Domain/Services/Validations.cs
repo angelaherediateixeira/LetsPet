@@ -9,21 +9,10 @@ namespace LetsPet854.Domain.Services
 {
     public class Validations
     {
-        //public static bool Resposta(string resposta)
-        //{
-        //    if (resposta != "S" && resposta != "N")
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
 
         public static bool YesOrNo()
         {
-            if (Answer() == "S")
+            if (RegexYes(Answer()))
             {
                 return true;
             }
@@ -33,13 +22,23 @@ namespace LetsPet854.Domain.Services
             }
         }
 
+        public static bool RegexNo(string answer) 
+        {
+            return new Regex(@"^((n)|(nao)|(não)){1}$").Match(answer).Success;
+        }
+
+        public static bool RegexYes(string answer)
+        {
+            return new Regex(@"^((s)|(sim)){1}$").Match(answer).Success;
+        }
+
         public static string Answer()
         {
-            string answer = Console.ReadLine().ToUpper();
-            while (answer != "S" && answer != "N")
+            string answer = Console.ReadLine().ToLower();
+            while (!RegexYes(answer) && !RegexNo(answer))
             {
-                Console.WriteLine("Digite S ou N:");
-                answer = Console.ReadLine().ToUpper();
+                Console.WriteLine("Digite Sim ou Não:");
+                answer = Console.ReadLine().ToLower();
             }
             return answer;
         }

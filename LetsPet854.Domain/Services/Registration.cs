@@ -29,13 +29,13 @@ namespace LetsPet854.Domain
         public static void AddService()
         {
             Console.WriteLine("O que você deseja cadastrar?");
-            ShowInfo.EnumServiceType();
+            PrintEnum.ServiceType();
             Type = Enum.GetName(typeof(ServiceType), Validations.Options(1, 2));
 
             if (Type == "Tosa")
             {
                 Console.WriteLine("Qual o tipo de tosa a ser realizado?");
-                ShowInfo.EnumGroomingType();
+                PrintEnum.GroomingType();
                 GroomingType = Enum.GetName(typeof(GroomingType), Validations.Options(1, 3));
             }
             else
@@ -44,11 +44,11 @@ namespace LetsPet854.Domain
             }
 
             Console.WriteLine("Para qual espécie é este serviço?");
-            ShowInfo.EnumSpecies();
+            PrintEnum.Species();
             Species = Enum.GetName(typeof(Species), Validations.Options(1, 2));
 
             Console.WriteLine("Para qual porte é este serviço?");
-            ShowInfo.EnumBreedSize();
+            PrintEnum.BreedSize();
             Size = Enum.GetName(typeof(BreedSize), Validations.Options(1, 2));
             Employees = (Size == "Grande")? 2 : 1;
 
