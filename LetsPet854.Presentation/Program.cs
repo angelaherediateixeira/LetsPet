@@ -11,16 +11,12 @@ namespace LetsPet854.Presentation
         {
             Console.WriteLine("Bem vindo ao Let's Pet");
 
-            //Navegation.MenuPet();//menu Pets
-            //ServicesMain.DefaultMenu(); //menu Services
-            //ServicesMain.DefaultMenu(); // fazer menu Pets
-            //ServicesMain.DefaultMenu(); //menu Services
-            MenuEmployee.DefaultMenu();
             Console.WriteLine(AnimalScrens.MenuPet);
-            Navigation.MenuPrincipal();
+            Navigation.MenuPrincipal();//menu Pet Tutor
+
+            MenuEmployee.DefaultMenu();//menu Employee
 
             ServicesMain.DefaultMenu(); //menu Services
-            EmployeeRegister.DefaultMenu(); //menu Employee
         }
     }
 }
