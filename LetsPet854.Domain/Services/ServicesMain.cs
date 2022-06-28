@@ -17,15 +17,17 @@ namespace LetsPet854.Domain.Services
         {
             Console.Clear();
             Console.WriteLine("Opções de serviço:");
-            Console.WriteLine("1 - Cadastro de Serviços e Preços dos Serviços\n2 - Buscar serviço\n3 - Relatório de serviços prestados\n4 - Relatório de produtos por serviço prestado");
-            while (!int.TryParse(Console.ReadLine(), out option) || (option < 1 || option > 4))
-            {
-                Console.WriteLine("Digite um valor válido:");
-            }
+            Console.WriteLine("1 - Cadastro de Serviços e Descontos\n2 - Buscar serviço\n3 - Relatório de serviços prestados\n4 - Relatório de produtos por serviço prestado");
+            option = Validations.Options(1, 4);
             switch (option)
             {
                 case 1:
-                    Registration.AddService();
+                    Console.WriteLine($"1 - Cadastro de Serviços\n2 - Cadastro de Descontos");
+                    option = Validations.Options(1, 2);
+                    if (option == 1)
+                        Registration.AddService();
+                    else
+                        Registration.AddDiscount();
                     break;
                 case 2:
                     Search.Options();

@@ -8,6 +8,10 @@ namespace LetsPet854.Domain.Services
 {
     public class Discount
     {
+        public Discount()
+        {
+        }
+
         public Discount(string serviceType, double percentageDiscount, int totalAttendance)
         {
             ServiceType = serviceType;
@@ -15,8 +19,8 @@ namespace LetsPet854.Domain.Services
             TotalAttendance = totalAttendance;
         }
 
-        internal string ServiceType;
-        internal double PercentageDiscount;
-        internal int TotalAttendance;
+        internal string ServiceType { get; set; }
+        internal double PercentageDiscount { get; set; }
+        internal int TotalAttendance { get; set; }
     }
 }

@@ -19,6 +19,11 @@ namespace LetsPet854.Domain
         internal int Employees { get; set; }
         internal double Price { get; set; }//*
 
+        public Service ()
+        {
+
+        }
+
         public Service(string type, string species, string size, string name, bool special, bool lotion, string groomingType, int serviceTime, int employees, double price)
         {
             Type = type;
