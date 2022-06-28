@@ -1,4 +1,6 @@
-﻿namespace LetsPet854.Domain.Services
+﻿using System.Text.RegularExpressions;
+
+namespace LetsPet854.Domain.Services
 {
     public class Validations
     {
