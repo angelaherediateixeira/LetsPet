@@ -52,7 +52,7 @@ namespace LetsPet854.Domain.Pets
             return guardianBirthDate;
         }
 
-        public Guardian RegisterGuardian()
+        public static void RegisterGuardian()
         {
             var guardian = new GuardianRegister();
             var name = guardian.GetGuardianName();
@@ -65,7 +65,13 @@ namespace LetsPet854.Domain.Pets
             //(List<Animal> petList, string cpf, string name, DateTime birthDate, Contact personContact, DateTime registerDate) :base (cpf, name, birthDate, personContact, registerDate)
 
             Guardian newGuardian = new(cpf, name, birthDate, newcontact, dateRegister); //petList
-            return newGuardian;
+            Guardian.GuardiansList.Add(newGuardian);
         }
+        private void HeaderGuardian()
+        {
+            Console.Clear();
+            Console.WriteLine("------- CADASTRO DE TUTOR -------");
+        }
+
     }
 }
