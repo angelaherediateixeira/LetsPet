@@ -75,10 +75,6 @@ namespace LetsPet854.Domain
 
         public static void AddDiscount()
         {
-            //string serviceType;
-            //double percentageDiscount;
-            //int totalAttendance;
-
             Discount newDiscount = new();
 
             Console.WriteLine("Qual o tipo de serviço que terá desconto?");
@@ -86,11 +82,11 @@ namespace LetsPet854.Domain
             newDiscount.ServiceType = Enum.GetName(typeof(ServiceType), Validations.Options(1, 2));
 
             Console.WriteLine("Após quantos atendimentos?");
-            newDiscount.TotalAttendance = int.Parse(Console.ReadLine());
+            newDiscount.TotalAttendance = Validations.ValidInt();
 
             Console.WriteLine("Qual a porcentagem de desconto?");
             newDiscount.PercentageDiscount = Validations.ValidDouble();
-            //Discount newDiscount = new Discount(serviceType, percentageDiscount, totalAttendance);
+
             DiscountPackage.Add(newDiscount);
             Console.WriteLine("Desconto registrado!");
             Console.WriteLine($"Após {newDiscount.TotalAttendance} atendimento(s), " +

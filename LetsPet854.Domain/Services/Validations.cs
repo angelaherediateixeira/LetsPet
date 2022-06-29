@@ -87,5 +87,15 @@ namespace LetsPet854.Domain.Services
             }
             return numero;
         }
+
+        public static int ValidInt()
+        {
+            int numero;
+            while (!int.TryParse(Console.ReadLine(), out numero) || numero < 1)
+            {
+                Console.WriteLine("Digite um número válido:");
+            }
+            return numero;
+        }
     }
 }
