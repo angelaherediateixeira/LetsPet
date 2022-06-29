@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LetsPet854.Domain.Common.Enuns;
+using LetsPet854.Domain;
 
 namespace LetsPet854.Domain
 {

@@ -8,16 +8,16 @@ namespace LetsPet854.Domain
 {
     public class Service
     {
-        internal string Type { get; set; }//*
-        internal string Species { get; set; }//*
-        internal string Size { get; set; }//*
-        internal string Name { get; set; }
-        internal bool Special { get; set; }
-        internal bool Lotion { get; set; }
-        internal string GroomingType = "";
-        internal int ServiceTime = 1;
-        internal int Employees { get; set; }
-        internal double Price { get; set; }//*
+        public string Type { get; set; }
+        public string Species { get; set; }
+        public string Size { get; set; }
+        public string Name { get; set; }
+        public bool Special { get; set; }
+        public bool Lotion { get; set; }
+        public string GroomingType = "";
+        public int ServiceTime = 1;
+        public int Employees { get; set; }
+        public double Price { get; set; }
 
         public Service ()
         {

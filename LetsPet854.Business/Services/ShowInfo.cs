@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LetsPet854.Domain;
 
-namespace LetsPet854.Domain
+namespace LetsPet854.Business
 {
     public class ShowInfo
     {
@@ -16,7 +17,7 @@ namespace LetsPet854.Domain
             {
                 if (search == service.Type)
                 {
-                    Print.PrintService(service);
+                    PrintService(service);
                 }
                 else
                 {
@@ -32,7 +33,7 @@ namespace LetsPet854.Domain
             {
                 if (search == service.Name)
                 {
-                    Print.PrintService(service);
+                    PrintService(service);
                 }
             }
         }
@@ -45,7 +46,7 @@ namespace LetsPet854.Domain
             {
                 if (search == service.Species || search == service.Size)
                 {
-                    Print.PrintService(service);
+                    PrintService(service);
                 }
                 else
                 {
@@ -70,5 +71,23 @@ namespace LetsPet854.Domain
             }
             return discount;
         }
+
+        public static void PrintService(Service service)
+        {
+            Console.WriteLine($"Nome do serviço: {service.Name}\n" +
+                        $"Informações do serviço:\n" +
+                        $"{service.Type}{(service.GroomingType == null ? null : $" {service.GroomingType}")};" +
+                        $" Espécie: {service.Species}; " +
+                        $"Porte: {service.Size}; " +
+                        $"Serviço especial: {Special(service)}; " +
+                        $"Loção: {Lotion(service)}; " +
+                        $"Tempo: {service.ServiceTime}h; " +
+                        $"Número de funcionários: {service.Employees}; " +
+                        $"Preço: R${service.Price}.");
+
+        }
+        static string Special(Service newService) => newService.Special ? "Sim" : "Não";
+
+        static string Lotion(Service newService) => newService.Lotion ? "Sim" : "Não";
     }
 }

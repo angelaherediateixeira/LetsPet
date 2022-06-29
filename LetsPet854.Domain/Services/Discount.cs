@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LetsPet854.Domain.Services
+namespace LetsPet854.Domain
 {
     public class Discount
     {
@@ -19,8 +19,8 @@ namespace LetsPet854.Domain.Services
             TotalAttendance = totalAttendance;
         }
 
-        internal string ServiceType { get; set; }
-        internal double PercentageDiscount { get; set; }
-        internal int TotalAttendance { get; set; }
+        public string ServiceType { get; set; }
+        public double PercentageDiscount { get; set; }
+        public int TotalAttendance { get; set; }
     }
 }

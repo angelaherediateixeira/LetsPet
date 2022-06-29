@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace LetsPet854.Domain.Services
+namespace LetsPet854.Business
 {
     public class Validations
     {

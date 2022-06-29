@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LetsPet854.Business;
 
 
-namespace LetsPet854.Domain.Services
+namespace LetsPet854.Presentation
 {
     public class ServicesMain
     {

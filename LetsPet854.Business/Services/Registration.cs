@@ -1,28 +1,15 @@
 ﻿using LetsPet854.Domain.Common.Enuns;
-using LetsPet854.Domain.Services;
+using LetsPet854.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LetsPet854.Domain
+namespace LetsPet854.Business
 {
     public class Registration
     {
-        //private Service Service { get; set; }
-        //private static string Type { get; set; }
-        //private static string Species { get; set; }
-        //private static string Size { get; set; }
-        //private static string Name { get; set; }
-        //private static bool Special { get; set; }
-        //private static bool Lotion { get; set; }
-        //private static string GroomingType = "";
-        //private static int ServiceTime { get { return 1; } set {; } }
-        //private static int Employees { get ;  set; }
-        //private static double Price;
-        //private readonly int option;
-        //internal static string validate;
         public static List<Service> ServicesList = new();
         public static List<Discount> DiscountPackage = new();
 
@@ -66,7 +53,6 @@ namespace LetsPet854.Domain
             Console.WriteLine("Qual o valor deste serviço?");
             newService.Price = Validations.ValidDouble();
 
-            //Service newService = new Service(Type, Species, Size, Name, Special, Lotion, GroomingType, ServiceTime, Employees, Price);
             ServicesList.Add(newService);
             Console.WriteLine("Cadastro Realizado!\n");
 
