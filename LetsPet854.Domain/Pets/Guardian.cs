@@ -13,11 +13,9 @@ namespace LetsPet854.Domain.Pets
 
         public List<Animal> PetList { get; set; } = new List<Animal>();
 
-        public Guardian(string cpf, string name, DateTime birthDate, Contact personContact, DateTime registerDate) :base (cpf, name, birthDate, personContact, registerDate) //List<Animal> petList, 
-        {
-           //PetList = petList;
-        }
-        
+        public Guardian(string cpf, string name, DateTime birthDate, Contact personContact, DateTime registerDate) : base(cpf, name, birthDate, personContact, registerDate) { }
+
+
 
     }
 }
