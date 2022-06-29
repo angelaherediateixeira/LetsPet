@@ -365,7 +365,9 @@ namespace LetsPet854.Business.Pets
 
             Console.WriteLine("Pet Cadastrado com Sucesso!!");
 
-            Animal pet = new(name, species, breed, color, breedSize, weight, birthDate, gender, castratedBool, diseaseBool, aggressiveBool, allergiesBool, physicalDisabilityBool, allergiesList, diseasesList, physicalDisabilityList);
+            Animal pet = new(name, species, breed, color, breedSize, weight, birthDate, gender,
+                castratedBool, diseaseBool, aggressiveBool, allergiesBool, physicalDisabilityBool,
+                allergiesList, diseasesList, physicalDisabilityList);
 
             guardianSearchResult.PetList.Add(pet);
         }
