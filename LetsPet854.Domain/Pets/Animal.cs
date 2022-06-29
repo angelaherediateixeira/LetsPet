@@ -77,11 +77,19 @@ namespace LetsPet854.Domain.Pets
 
         public bool TwoMonthsBool()
         {
-            if (Age < 1 && BirthDate.Month - DateTime.Now.Month < 2)
-                return true;
-            else
-                return false;
+            AllergiesList.Add(Allergie);
         }
+
+        public void AddDiseases(string Disease)
+        {
+            DiseasesList.Add(Disease);
+        }
+
+        public void AddPhysicalDisability(string PhysicalDisability)
+        {
+            PhysicalDisabilityList.Add(PhysicalDisability);
+        }
+
 
     }
 }

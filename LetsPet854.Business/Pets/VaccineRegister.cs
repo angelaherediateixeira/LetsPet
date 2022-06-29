@@ -5,7 +5,7 @@ namespace LetsPet854.Business.Pets
 {
     public class VaccineRegister
     {
-        
+
         public Species GetVaccineSpecies()
         {
 

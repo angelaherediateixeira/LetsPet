@@ -319,17 +319,17 @@ namespace LetsPet854.Business.Pets
             }
             return physicalDisability;
         }
-
+     
         public static void AnimalRegister()
         {
             Console.Clear();
-            Console.WriteLine("Cadastrando Pets");
+            Console.WriteLine("Cadastando Pets");
             Console.WriteLine("Digite o CPF do Tutor:");
             var response = Console.ReadLine();
             var guardianSearchResult = SearchGuardian.SearchGuardianByCPF(response);
             if (guardianSearchResult == null)
             {
-                Console.ReadKey(); //alterar para caso não encontre o CPF
+                Console.ReadKey();
             }
             var name = GetAnimalName();
             var species = GetSpecies();
@@ -359,60 +359,16 @@ namespace LetsPet854.Business.Pets
             {
                 physicalDisabilityList = GetPhysicalDisabilityList();
             }
+            
+            //var vaccine
+
 
             Console.WriteLine("Pet Cadastrado com Sucesso!!");
 
             Animal pet = new(name, species, breed, color, breedSize, weight, birthDate, gender, castratedBool, diseaseBool, aggressiveBool, allergiesBool, physicalDisabilityBool, allergiesList, diseasesList, physicalDisabilityList);
 
             guardianSearchResult.PetList.Add(pet);
-
         }
-
-
-        //Sugestão: tutor ser uma entrada para o registro
-        // e não inserir a busca de tutor no registro
-
-        //public static void AnimalRegister(Guardian tutor)  
-        //{
-        //    var name = GetAnimalName();
-        //    var species = GetSpecies();
-        //    var breed = GetBreed();
-        //    var color = GetColor();
-        //    var breedSize = GetBreedSize();
-        //    var weight = GetWeight();
-        //    var birthDate = GetBirthDate();
-        //    var gender = GetGender();
-        //    var castratedBool = GetCastratedBool();
-        //    var aggressiveBool = GetAggressiveBool();
-        //    var diseaseBool = GetDiseasesBool();
-        //    List<string> diseasesList = new List<string>();
-        //    if (diseaseBool)
-        //    {
-        //        diseasesList = GetDiseasesList();
-        //    }
-        //    var allergiesBool = GetAllergiesBool();
-        //    List<string> allergiesList = new List<string>();
-        //    if (allergiesBool)
-        //    {
-        //        allergiesList = GetAllergiesList();
-        //    }
-        //    var physicalDisabilityBool = GetPhysicalDisabilityBool();
-        //    List<string> physicalDisabilityList = new List<string>();
-        //    if (physicalDisabilityBool)
-        //    {
-        //        physicalDisabilityList = GetPhysicalDisabilityList();
-        //    }
-
-        //    Console.WriteLine("Pet Cadastrado com Sucesso!!");
-
-        //    Animal pet = new(name, species, breed, color, breedSize, weight, birthDate, gender, 
-        //        castratedBool, diseaseBool, aggressiveBool, allergiesBool, physicalDisabilityBool, 
-        //        allergiesList, diseasesList, physicalDisabilityList);
-
-        //    tutor.PetList.Add(pet);
-        //    pet.Guardian = tutor; 
-        //    Animal.AnimalsList.Add(pet); 
-        //}
 
         private static void HeaderPet()
         {
