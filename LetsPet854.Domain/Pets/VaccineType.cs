@@ -13,7 +13,7 @@ namespace LetsPet854.Domain.Pets
         public Species VaccineSpecies { get; set; }
         public int VaccineValidity { get; set; }
 
-        public List<VaccineType> ListVaccine { get; set; }
+        public static List<VaccineType> VaccineTypeList = new();
 
         public VaccineType(string vaccineName, Species vaccineSpecies, int vaccineValidity)
         {

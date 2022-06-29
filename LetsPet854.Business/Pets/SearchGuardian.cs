@@ -23,5 +23,22 @@ namespace LetsPet854.Business.Pets
             }
             return FilteredGuardian.First();
         }
+
+        public static List<Guardian> SearchGuardianByName(string Name)
+        {
+            var FilteredGuardian = (
+                from guardian in Guardian.GuardiansList
+                where guardian.Name.Contains(Name)
+                select guardian
+                ).ToList();
+
+            if (FilteredGuardian.Count() == 0)
+            {
+                Console.WriteLine($"Nenhum tutor com o nome {Name} foi encontrado no sistema.");
+                return null;
+            }
+
+            return FilteredGuardian;
+        }
     }
 }

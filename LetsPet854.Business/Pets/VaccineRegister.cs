@@ -17,7 +17,7 @@ namespace LetsPet854.Business.Pets
                 Console.WriteLine("Para qual espécie é a vacina a ser cadastrada? (Digite 1 para cachorro ou 2 para gato)");
                 if (!valido)
                 {
-                    Console.WriteLine("Erro na leitura, digite uma das especies acima: ");
+                    Console.WriteLine("Valor inválido, digite uma das opções acima: ");
                 }
                 var input = Console.ReadLine();
                 valido = int.TryParse(input, out inputNumerico) && (inputNumerico == 1 || inputNumerico == 2);
@@ -59,7 +59,7 @@ namespace LetsPet854.Business.Pets
             return vaccineValidity;
         }
 
-        public VaccineType GetVaccineType()
+        public void RegisterVaccineType()
         {
             var newVaccineType = new VaccineRegister();
             var name = newVaccineType.GetVaccineName();
@@ -67,13 +67,10 @@ namespace LetsPet854.Business.Pets
             var validity = newVaccineType.GetVaccineValidity();
 
             var newVaccine = new VaccineType(name, species, validity);
-            return newVaccine;
+            VaccineType.VaccineTypeList.Add(newVaccine);
         }
 
-        public void AddListVaccine(VaccineType newVaccine)
-        {
-            newVaccine.ListVaccine.Add(newVaccine);
-        }
+
 
     }
 
