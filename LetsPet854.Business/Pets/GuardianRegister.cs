@@ -51,26 +51,16 @@ namespace LetsPet854.Domain.Pets
             } while (true);
             return guardianBirthDate;
         }
-        
+
         public static void RegisterGuardian()
         {
             var guardian = new GuardianRegister();
             var name = guardian.GetGuardianName();
             var cpf = guardian.GetGuardianCPF();
             var birthDate = guardian.GetBirthDate();
-            //var petlist = guardian.PetList;
             Contact newcontact = CreateContact.GenerateContact();
-            var contact = newcontact.RegisterContact();
             var dateRegister = DateTime.Now;
-            Guardian newGuardian = new(cpf, name, birthDate, newcontact, dateRegister); 
-            Guardian.GuardiansList.Add(newGuardian);
-        }
-        private void HeaderGuardian()
-        {
-            Console.Clear();
-            Console.WriteLine("------- CADASTRO DE TUTOR -------");
-        }
-            Guardian newGuardian = new(cpf, name, birthDate, newcontact, dateRegister); //petList
+            Guardian newGuardian = new(cpf, name, birthDate, newcontact, dateRegister);
             Guardian.GuardiansList.Add(newGuardian);
         }
         private void HeaderGuardian()
@@ -79,6 +69,5 @@ namespace LetsPet854.Domain.Pets
             Console.WriteLine("------- CADASTRO DE TUTOR -------");
         }
 
-        }
     }
 }
