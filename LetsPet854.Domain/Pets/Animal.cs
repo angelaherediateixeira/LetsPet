@@ -9,12 +9,14 @@ namespace LetsPet854.Domain.Pets
 {
     public class Animal
     {
-        public Animal(string name, Species species, string breed, string color, 
-            BreedSize breedSize, decimal weight, DateTime birthDate, Gender gender, 
-            bool castratedBool, bool diseasesBool, bool aggressiveBool, 
-            bool allergiesBool, bool physicalDisabilityBool, 
-            List<string> allergiesList, List<string> diseasesList, 
-            List<string> physicalDisabilityList) // List<PetVaccine> petVaccineList
+        public static List<Animal> AnimalsList = new List<Animal>();
+
+        public Animal(string name, Species species, string breed, string color,
+            BreedSize breedSize, decimal weight, DateTime birthDate, Gender gender,
+            bool castratedBool, bool diseasesBool, bool aggressiveBool,
+            bool allergiesBool, bool physicalDisabilityBool,
+            List<string> allergiesList, List<string> diseasesList,
+            List<string> physicalDisabilityList)
         {
             Name = name;
             Species = species;
@@ -32,10 +34,10 @@ namespace LetsPet854.Domain.Pets
             AllergiesList = allergiesList;
             DiseasesList = diseasesList;
             PhysicalDisabilityList = physicalDisabilityList;
-            //PetVaccineList = petVaccineList;
         }
 
-        public string Name { get; set; }    
+        public Guardian Guardian { get; set; }
+        public string Name { get; set; }
         public Species Species { get; set; }
         public string Breed { get; set; }
         public string Color { get; set; }
@@ -44,7 +46,7 @@ namespace LetsPet854.Domain.Pets
         public DateTime BirthDate { get; set; }
         public Gender Gender { get; set; }
         public int Age { get { return AgeCalculator(); } }
-        public bool CastratedBool { get; set; }  
+        public bool CastratedBool { get; set; }
         public bool DiseasesBool { get; set; }
         public bool AggressiveBool { get; set; }
         public bool AllergiesBool { get; set; }
@@ -53,9 +55,8 @@ namespace LetsPet854.Domain.Pets
 
         public List<string> AllergiesList { get; set; }
         public List<string> DiseasesList { get; set; }
-        public List<string> PhysicalDisabilityList { get; set;}
+        public List<string> PhysicalDisabilityList { get; set; }
         public List<PetVaccine> PetVaccineList { get; set; }
-
 
         // ----------------- MÉTODOS -----------------
 
@@ -69,12 +70,12 @@ namespace LetsPet854.Domain.Pets
             return idade;
         }
 
-        public void BirthRegistration(int year, int month, int day= 1)
+        public void BirthRegistration(int year, int month, int day = 1)
         {
             BirthDate = new DateTime(year, month, day);
         }
 
-        public void AddAllergies(string Allergie)
+        public bool TwoMonthsBool()
         {
             AllergiesList.Add(Allergie);
         }
