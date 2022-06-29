@@ -12,6 +12,8 @@ namespace LetsPet854.Presentation.Pets
     public class Navigation
     {
         public static int optionInput;
+
+        
         public static void MenuPrincipal()
         {
             do
