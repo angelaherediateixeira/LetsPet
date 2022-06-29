@@ -8,5 +8,6 @@ namespace LetsPet854.Business.Pets
 {
     public class SearchPet
     {
+        
     }
 }
