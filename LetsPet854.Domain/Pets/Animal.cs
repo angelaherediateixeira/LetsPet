@@ -9,12 +9,14 @@ namespace LetsPet854.Domain.Pets
 {
     public class Animal
     {
-        public Animal(string name, Species species, string breed, string color, 
-            BreedSize breedSize, decimal weight, DateTime birthDate, Gender gender, 
-            bool castratedBool, bool diseasesBool, bool aggressiveBool, 
-            bool allergiesBool, bool physicalDisabilityBool, 
-            List<string> allergiesList, List<string> diseasesList, 
-            List<string> physicalDisabilityList) // List<PetVaccine> petVaccineList
+        public static List<Animal> AnimalsList = new List<Animal>();
+
+        public Animal(string name, Species species, string breed, string color,
+            BreedSize breedSize, decimal weight, DateTime birthDate, Gender gender,
+            bool castratedBool, bool diseasesBool, bool aggressiveBool,
+            bool allergiesBool, bool physicalDisabilityBool,
+            List<string> allergiesList, List<string> diseasesList,
+            List<string> physicalDisabilityList)
         {
             Name = name;
             Species = species;
@@ -32,10 +34,10 @@ namespace LetsPet854.Domain.Pets
             AllergiesList = allergiesList;
             DiseasesList = diseasesList;
             PhysicalDisabilityList = physicalDisabilityList;
-            //PetVaccineList = petVaccineList;
         }
 
-        public string Name { get; set; }    
+        public Guardian Guardian { get; set; }
+        public string Name { get; set; }
         public Species Species { get; set; }
         public string Breed { get; set; }
         public string Color { get; set; }
@@ -44,7 +46,7 @@ namespace LetsPet854.Domain.Pets
         public DateTime BirthDate { get; set; }
         public Gender Gender { get; set; }
         public int Age { get { return AgeCalculator(); } }
-        public bool CastratedBool { get; set; }  
+        public bool CastratedBool { get; set; }
         public bool DiseasesBool { get; set; }
         public bool AggressiveBool { get; set; }
         public bool AllergiesBool { get; set; }
@@ -53,9 +55,8 @@ namespace LetsPet854.Domain.Pets
 
         public List<string> AllergiesList { get; set; }
         public List<string> DiseasesList { get; set; }
-        public List<string> PhysicalDisabilityList { get; set;}
+        public List<string> PhysicalDisabilityList { get; set; }
         public List<PetVaccine> PetVaccineList { get; set; }
-
 
         // ----------------- MÉTODOS -----------------
 
@@ -69,90 +70,17 @@ namespace LetsPet854.Domain.Pets
             return idade;
         }
 
-        public void BirthRegistration(int year, int month, int day= 1)
+        public void BirthRegistration(int year, int month, int day = 1)
         {
             BirthDate = new DateTime(year, month, day);
         }
 
-        public void AddAllergies(string Allergie)
+        public bool TwoMonthsBool()
         {
-            AllergiesList.Add(Allergie);
-        }
-
-        public void AddDiseases(string Disease)
-        {
-            DiseasesList.Add(Disease);
-        }
-
-        public void AddPhysicalDisability(string PhysicalDisability)
-        {
-            PhysicalDisabilityList.Add(PhysicalDisability);
-        }
-
-        public void PrintPet()
-        {
-            Console.Clear();
-            Console.WriteLine("---------- IMPRIMINDO PET ----------");
-            Console.WriteLine($"Nome: {Name}");
-            Console.WriteLine($"Espécie: {Species}");
-            Console.WriteLine($"Raça: {Breed}");
-            Console.WriteLine($"Cor: {Color}");
-            Console.WriteLine($"Porte: {BreedSize}");
-            Console.WriteLine($"Peso: {Weight} Kg");
-            Console.WriteLine($"Nascimento: {BirthDate}");
-            Console.WriteLine($"Idade: {Age} ano(s)");
-            Console.WriteLine($"Sexo: {Gender}");
-
-            Console.Write($"Castrado: ");
-            if (CastratedBool)
-                Console.WriteLine("SIM");
+            if (Age < 1 && BirthDate.Month - DateTime.Now.Month < 2)
+                return true;
             else
-                Console.WriteLine("NÃO");
-
-
-            Console.Write($"Agressivo: ");
-            if (AggressiveBool)
-                Console.WriteLine("SIM");
-            else
-                Console.WriteLine("NÃO");
-
-
-            if (DiseasesBool)
-            {
-                Console.WriteLine("Doenças do pet:");
-                foreach (string disease in DiseasesList)
-                    Console.WriteLine(disease);
-            }
-            else
-                Console.WriteLine("O pet não possui nenhuma doença");
-             
-
-            if (AllergiesBool)
-            {
-                Console.WriteLine("Alergias do pet:");
-                foreach (string allergie in AllergiesList)
-                    Console.WriteLine(allergie);
-            }
-            else
-                Console.WriteLine("O pet não possui nenhuma alergia");
-
-
-            if (PhysicalDisabilityBool)
-            {
-                Console.WriteLine("Deficiências físicas do pet:");
-                foreach (string deficiencia in PhysicalDisabilityList)
-                    Console.WriteLine(deficiencia);
-            }
-            else
-                Console.WriteLine("O pet não possui nenhuma deficiência física");
-
-            Console.WriteLine("CARTEIRA DE VACINAÇÃO DO PET:");
-            foreach(PetVaccine vacina in PetVaccineList)
-                Console.WriteLine(vacina);
-            
-            Console.WriteLine($"Data de cadastro: {RegistrationDate}");
-            Console.WriteLine();
-
+                return false;
         }
 
     }

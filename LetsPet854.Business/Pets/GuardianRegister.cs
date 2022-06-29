@@ -1,10 +1,16 @@
-﻿namespace LetsPet854.Domain.Pets
+using LetsPet854.Business.Common;
+using LetsPet854.Domain.Common;
+using LetsPet854.Domain.Pets;
+
+namespace LetsPet854.Domain.Pets
+
 {
     public class GuardianRegister
     {
         public string GetGuardianName()
         {
             string guardianName;
+            HeaderGuardian();
             do
             {
                 Console.WriteLine("Insira o nome do tutor:");
@@ -21,6 +27,7 @@
         public string GetGuardianCPF()
         {
             string guardianCPF;
+            HeaderGuardian();
             Console.WriteLine("Insira o CPF do tutor:");
             do
             {
@@ -32,6 +39,7 @@
         public DateTime GetBirthDate()
         {
             DateTime guardianBirthDate;
+            HeaderGuardian();
             do
             {
                 Console.WriteLine("Qual a data de nascimento do tutor? (DD/MM/YYYY)");
@@ -44,21 +52,22 @@
             return guardianBirthDate;
         }
 
-        public Guardian RegisterGuardian()
+        public static void RegisterGuardian()
         {
             var guardian = new GuardianRegister();
             var name = guardian.GetGuardianName();
             var cpf = guardian.GetGuardianCPF();
             var birthDate = guardian.GetBirthDate();
-            //var petlist = guardian.PetList;
-            ContactServices newcontact = new ContactServices();
-            var contact = newcontact.RegisterContact();
+            Contact newcontact = CreateContact.GenerateContact();
             var dateRegister = DateTime.Now;
-
-            //(List<Animal> petList, string cpf, string name, DateTime birthDate, Contact personContact, DateTime registerDate) :base (cpf, name, birthDate, personContact, registerDate)
-
-            Guardian newGuardian = new(cpf, name, birthDate, contact, dateRegister); //petList
-            return newGuardian;
+            Guardian newGuardian = new(cpf, name, birthDate, newcontact, dateRegister); 
+            Guardian.GuardiansList.Add(newGuardian);
         }
+        private void HeaderGuardian()
+        {
+            Console.Clear();
+            Console.WriteLine("------- CADASTRO DE TUTOR -------");
+        }
+
     }
 }

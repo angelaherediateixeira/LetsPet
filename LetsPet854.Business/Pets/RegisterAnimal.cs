@@ -1,19 +1,19 @@
-﻿using LetsPet854.Domain.Common.Enuns;
+using LetsPet854.Domain.Common.Enuns;
+using LetsPet854.Domain.Pets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LetsPet854.Domain.Pets
+namespace LetsPet854.Business.Pets
 {
     public class RegisterAnimal
     {
-        
-        
-        public string GetAnimalName()
+        public static string GetAnimalName()
         {
             string animalName;
+            HeaderPet();
             do
             {
                 Console.WriteLine("Insira o nome do animal:");
@@ -27,11 +27,12 @@ namespace LetsPet854.Domain.Pets
             return animalName;
         }
 
-        public Species GetSpecies()
+        public static Species GetSpecies()
         {
             bool valido = true;
             int inputNumerico;
             Species animalSpecies;
+            HeaderPet();
             do
             {
                 Console.WriteLine("Qual a especie do seu pet? (Digite 1 para cachorro ou 2 para gato)");
@@ -45,9 +46,10 @@ namespace LetsPet854.Domain.Pets
             animalSpecies = (Species)inputNumerico;
             return animalSpecies;
         }
-        public string GetBreed()
+        public static string GetBreed()
         {
             string animalBreed;
+            HeaderPet();
             do
             {
                 Console.WriteLine("Insira a raça do Animal:");
@@ -61,9 +63,10 @@ namespace LetsPet854.Domain.Pets
             return animalBreed;
         }
 
-        public string GetColor()
+        public static string GetColor()
         {
             string animalColor;
+            HeaderPet();
             do
             {
                 Console.WriteLine("Insira a cor do animal:");
@@ -77,11 +80,12 @@ namespace LetsPet854.Domain.Pets
             return animalColor;
         }
 
-        public BreedSize GetBreedSize()
+        public static BreedSize GetBreedSize()
         {
             bool valido = true;
             int inputNumerico;
             BreedSize animalSize;
+            HeaderPet();
             do
             {
                 Console.WriteLine("Qual o porte do seu pet? (Digite 1 para pequeno ou 2 para grande)");
@@ -96,9 +100,10 @@ namespace LetsPet854.Domain.Pets
             return animalSize;
         }
 
-        public decimal GetWeight()
+        public static decimal GetWeight()
         {
             decimal animalWeight;
+            HeaderPet();
             do
             {
                 Console.WriteLine("Qual o peso do animal");
@@ -113,9 +118,10 @@ namespace LetsPet854.Domain.Pets
             } while (true);
             return animalWeight;
         }
-        public DateTime GetBirthDate()
+        public static DateTime GetBirthDate()
         {
             DateTime animalBirthDate;
+            HeaderPet();
             do
             {
                 Console.WriteLine("Qual a data de nascimento do animal? (DD/MM/YYYY)");
@@ -129,11 +135,12 @@ namespace LetsPet854.Domain.Pets
         }
 
 
-        public Gender GetGender()
+        public static Gender GetGender()
         {
             bool valido = true;
             int inputNumerico;
             Gender animalGender;
+            HeaderPet();
             do
             {
                 Console.WriteLine("Qual o genêro do seu pet? (Digite 1 para fêmea ou 2 para macho)");
@@ -148,10 +155,11 @@ namespace LetsPet854.Domain.Pets
             return animalGender;
         }
 
-        public bool GetAggressiveBool()
+        public static bool GetAggressiveBool()
         {
             string answer;
             bool agressiveAnimal = false;
+            HeaderPet();
             do
             {
                 Console.WriteLine("O animal é agressivo? Digite S para sim ou N para não.");
@@ -173,10 +181,11 @@ namespace LetsPet854.Domain.Pets
 
         }
 
-        public bool GetCastratedBool()
+        public static bool GetCastratedBool()
         {
             string answer;
             bool castratedAnimal = true;
+            HeaderPet();
             do
             {
                 Console.WriteLine("O animal é castrado? Digite S para sim ou N para não.");
@@ -197,10 +206,11 @@ namespace LetsPet854.Domain.Pets
             return castratedAnimal;
         }
 
-        public bool GetAllergiesBool()
+        public static bool GetAllergiesBool()
         {
             string answer;
             bool allergiesAnimalBool = true;
+            HeaderPet();
             do
             {
                 Console.WriteLine("O animal possui alguma alergia? Digite S para sim ou N para não.");
@@ -221,7 +231,7 @@ namespace LetsPet854.Domain.Pets
             return allergiesAnimalBool;
         }
 
-        public List<string> GetAllergiesList()
+        public static List<string> GetAllergiesList()
         {
             var allergies = new List<string>();
             string answer = "S";
@@ -235,7 +245,7 @@ namespace LetsPet854.Domain.Pets
             return allergies;
         }
 
-        public bool GetDiseasesBool()
+        public static bool GetDiseasesBool()
         {
             string answer;
             bool diseasesAnimalBool = true;
@@ -259,7 +269,7 @@ namespace LetsPet854.Domain.Pets
             return diseasesAnimalBool;
         }
 
-        public List<string> GetDiseasesList()
+        public static List<string> GetDiseasesList()
         {
             var diseases = new List<string>();
             string answer = "S";
@@ -273,7 +283,7 @@ namespace LetsPet854.Domain.Pets
             return diseases;
         }
 
-        public bool GetPhysicalDisabilityBool()
+        public static bool GetPhysicalDisabilityBool()
         {
             string answer;
             bool physicalDisabilityBool = true;
@@ -296,7 +306,7 @@ namespace LetsPet854.Domain.Pets
             } while (answer != "S" && answer != "N" || string.IsNullOrWhiteSpace(answer));
             return physicalDisabilityBool;
         }
-        public List<string> GetPhysicalDisabilityList()
+        public static List<string> GetPhysicalDisabilityList()
         {
             var physicalDisability = new List<string>();
             string answer = "S";
@@ -309,33 +319,106 @@ namespace LetsPet854.Domain.Pets
             }
             return physicalDisability;
         }
-     
-        public Animal AnimalRegister()
-        {
-            var pet = new RegisterAnimal();
-            var name = pet.GetAnimalName();
-            var species = pet.GetSpecies();
-            var breed = pet.GetBreed();
-            var color = pet.GetColor();
-            var breedSize = pet.GetBreedSize();
-            var weight = pet.GetWeight();
-            var birthDate = pet.GetBirthDate();
-            var gender = pet.GetGender();
-            var castratedBool = pet.GetCastratedBool();
-            var diseaseBool = pet.GetDiseasesBool();
-            var aggressiveBool = pet.GetAggressiveBool();
-            var allergiesBool = pet.GetAllergiesBool();
-            var physicalDisabilityBool = pet.GetPhysicalDisabilityBool();
-            var allergiesList = pet.GetAllergiesList();
-            var diseasesList = pet.GetDiseasesList();
-            var physicalDisabilityList = pet.GetPhysicalDisabilityList();
-            
-            //var vaccine        
 
-            Animal pet1 = new(name, species, breed, color, breedSize, weight, birthDate, gender, castratedBool, diseaseBool, aggressiveBool, allergiesBool, physicalDisabilityBool, allergiesList, diseasesList, physicalDisabilityList);
-            return pet1;
+        public static void AnimalRegister()
+        {
+            Console.Clear();
+            Console.WriteLine("Cadastrando Pets");
+            Console.WriteLine("Digite o CPF do Tutor:");
+            var response = Console.ReadLine();
+            var guardianSearchResult = SearchGuardian.SearchGuardianByCPF(response);
+            if (guardianSearchResult == null)
+            {
+                Console.ReadKey(); //alterar para caso não encontre o CPF
+            }
+            var name = GetAnimalName();
+            var species = GetSpecies();
+            var breed = GetBreed();
+            var color = GetColor();
+            var breedSize = GetBreedSize();
+            var weight = GetWeight();
+            var birthDate = GetBirthDate();
+            var gender = GetGender();
+            var castratedBool = GetCastratedBool();
+            var aggressiveBool = GetAggressiveBool();
+            var diseaseBool = GetDiseasesBool();
+            List<string> diseasesList = new List<string>();
+            if (diseaseBool)
+            {
+                diseasesList = GetDiseasesList();
+            }
+            var allergiesBool = GetAllergiesBool();
+            List<string> allergiesList = new List<string>();
+            if (allergiesBool)
+            {
+                allergiesList = GetAllergiesList();
+            }
+            var physicalDisabilityBool = GetPhysicalDisabilityBool();
+            List<string> physicalDisabilityList = new List<string>();
+            if (physicalDisabilityBool)
+            {
+                physicalDisabilityList = GetPhysicalDisabilityList();
+            }
+
+            Console.WriteLine("Pet Cadastrado com Sucesso!!");
+
+            Animal pet = new(name, species, breed, color, breedSize, weight, birthDate, gender, castratedBool, diseaseBool, aggressiveBool, allergiesBool, physicalDisabilityBool, allergiesList, diseasesList, physicalDisabilityList);
+
+            guardianSearchResult.PetList.Add(pet);
+
         }
 
+
+        //Sugestão: tutor ser uma entrada para o registro
+        // e não inserir a busca de tutor no registro
+
+        //public static void AnimalRegister(Guardian tutor)  
+        //{
+        //    var name = GetAnimalName();
+        //    var species = GetSpecies();
+        //    var breed = GetBreed();
+        //    var color = GetColor();
+        //    var breedSize = GetBreedSize();
+        //    var weight = GetWeight();
+        //    var birthDate = GetBirthDate();
+        //    var gender = GetGender();
+        //    var castratedBool = GetCastratedBool();
+        //    var aggressiveBool = GetAggressiveBool();
+        //    var diseaseBool = GetDiseasesBool();
+        //    List<string> diseasesList = new List<string>();
+        //    if (diseaseBool)
+        //    {
+        //        diseasesList = GetDiseasesList();
+        //    }
+        //    var allergiesBool = GetAllergiesBool();
+        //    List<string> allergiesList = new List<string>();
+        //    if (allergiesBool)
+        //    {
+        //        allergiesList = GetAllergiesList();
+        //    }
+        //    var physicalDisabilityBool = GetPhysicalDisabilityBool();
+        //    List<string> physicalDisabilityList = new List<string>();
+        //    if (physicalDisabilityBool)
+        //    {
+        //        physicalDisabilityList = GetPhysicalDisabilityList();
+        //    }
+
+        //    Console.WriteLine("Pet Cadastrado com Sucesso!!");
+
+        //    Animal pet = new(name, species, breed, color, breedSize, weight, birthDate, gender, 
+        //        castratedBool, diseaseBool, aggressiveBool, allergiesBool, physicalDisabilityBool, 
+        //        allergiesList, diseasesList, physicalDisabilityList);
+
+        //    tutor.PetList.Add(pet);
+        //    pet.Guardian = tutor; 
+        //    Animal.AnimalsList.Add(pet); 
+        //}
+
+        private static void HeaderPet()
+        {
+            Console.Clear();
+            Console.WriteLine("------- CADASTRO DE ANIMAL -------");
+        }
 
     }
 }

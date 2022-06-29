@@ -10,6 +10,11 @@
   <ItemGroup>
     <ProjectReference Include="..\LetsPet854.Business\LetsPet854.Business.csproj" />
     <ProjectReference Include="..\LetsPet854.Domain\LetsPet854.Domain.csproj" />
+    <ProjectReference Include="..\LetsPet854.Infra\LetsPet854.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Menus\" />
   </ItemGroup>
 
 </Project>

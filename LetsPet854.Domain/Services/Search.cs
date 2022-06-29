@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LetsPet854.Domain.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +15,16 @@ namespace LetsPet854.Domain
             int input;
             Console.WriteLine("Qual o tipo de pesquisa que deseja realizar?");
             Console.WriteLine("1 - Tipo de Serviços\n2 - Por porte ou espécie");
-            while(!int.TryParse(Console.ReadLine(), out input) || (input < 1 || input > 2))
-            {
-                Console.WriteLine("Digite um valor válido:");
-            }
+            input = Validations.Options(1,2);
+            //while(!int.TryParse(Console.ReadLine(), out input) || (input < 1 || input > 2))
+            //{
+            //    Console.WriteLine("Digite um valor válido:");
+            //}
             if (input == 1)
             {
                 Console.WriteLine("Opções de serviço são:\n1 - Banho\n2 - Tosa");
-                input = int.Parse(Console.ReadLine());
+                input = Validations.Options(1, 2);
+                //input = int.Parse(Console.ReadLine());
                 if (input == 1)
                 {
                     ShowInfo.ByType("Banho");
