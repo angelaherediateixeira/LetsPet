@@ -82,6 +82,5 @@ namespace LetsPet854.Domain.Pets
             else
                 return false;
         }
-
     }
 }

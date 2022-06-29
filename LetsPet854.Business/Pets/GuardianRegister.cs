@@ -60,7 +60,7 @@ namespace LetsPet854.Domain.Pets
             var birthDate = guardian.GetBirthDate();
             Contact newcontact = CreateContact.GenerateContact();
             var dateRegister = DateTime.Now;
-            Guardian newGuardian = new(cpf, name, birthDate, newcontact, dateRegister); 
+            Guardian newGuardian = new(cpf, name, birthDate, newcontact, dateRegister);
             Guardian.GuardiansList.Add(newGuardian);
         }
         private void HeaderGuardian()
