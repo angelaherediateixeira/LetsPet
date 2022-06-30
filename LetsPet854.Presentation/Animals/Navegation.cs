@@ -12,6 +12,8 @@ namespace LetsPet854.Presentation.Pets
     public class Navigation
     {
         public static int optionInput;
+
+        
         public static void MenuPrincipal()
         {
             do
@@ -57,7 +59,7 @@ namespace LetsPet854.Presentation.Pets
                         break;
                     case 5:
                         Console.Clear();
-                        Console.WriteLine("volatr ao menu inicial");
+                        Console.WriteLine("voltar ao menu inicial");
                         Console.WriteLine("Não implementado");
                         // voltar a tela inicial
                         break;
@@ -68,6 +70,7 @@ namespace LetsPet854.Presentation.Pets
                 }
             } while (true);
         }
+
 
         private static void MenuHeader()
         {

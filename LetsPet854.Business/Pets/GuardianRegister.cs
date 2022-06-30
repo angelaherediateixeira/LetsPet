@@ -58,13 +58,9 @@ namespace LetsPet854.Domain.Pets
             var name = guardian.GetGuardianName();
             var cpf = guardian.GetGuardianCPF();
             var birthDate = guardian.GetBirthDate();
-            //var petlist = guardian.PetList;
             Contact newcontact = CreateContact.GenerateContact();
             var dateRegister = DateTime.Now;
-
-            //(List<Animal> petList, string cpf, string name, DateTime birthDate, Contact personContact, DateTime registerDate) :base (cpf, name, birthDate, personContact, registerDate)
-
-            Guardian newGuardian = new(cpf, name, birthDate, newcontact, dateRegister); //petList
+            Guardian newGuardian = new(cpf, name, birthDate, newcontact, dateRegister);
             Guardian.GuardiansList.Add(newGuardian);
         }
         private void HeaderGuardian()
