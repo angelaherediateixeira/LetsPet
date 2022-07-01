@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace LetsPet854.Domain.Services
+namespace LetsPet854.Business
 {
     public class Validations
     {
@@ -82,6 +82,16 @@ namespace LetsPet854.Domain.Services
         {
             double numero;
             while (!double.TryParse(Console.ReadLine(), out numero) || numero < 1)
+            {
+                Console.WriteLine("Digite um número válido:");
+            }
+            return numero;
+        }
+
+        public static int ValidInt()
+        {
+            int numero;
+            while (!int.TryParse(Console.ReadLine(), out numero) || numero < 1)
             {
                 Console.WriteLine("Digite um número válido:");
             }
